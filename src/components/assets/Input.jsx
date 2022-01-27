@@ -5,10 +5,10 @@ const Input = styled.input`background: rgb(250, 252, 250);
   border-radius: 0.3rem;
   color: rgba(0, 0, 0, 0.9);
   height: 40px;
-  margin: ${(props) => props.msize};
+  margin: ${(props) => props.msize || '0'};
   outline: none;
   padding: 0 1rem;
-  width: ${(props) => props.wsize};
+  width: ${(props) => props.wsize || 'auto'};
 
   &:focus {
     background: rgba(247, 141, 141, 0.178);
