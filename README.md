@@ -262,7 +262,7 @@ https://www.figma.com/file/cBDVGdqQxUuVlQp3ehW7wx/Recipes-App
 
 - Serão `10` dias de projeto.
 
-- Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
+- Data de entrega para avaliação final do projeto: `16/02/2022 - 14:00h`.
 
 ---
 
