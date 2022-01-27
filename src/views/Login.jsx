@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { userAction } from '../redux/actions';
+
 import Input from '../components/assets/Input';
 import ButtonSD from '../components/assets/ButtonSD';
 
 const Login = () => {
-  const [loginState, setInfLogin] = useState({ user: '', psw: '' });
+  const [loginState, setInfLogin] = useState({ user: '', psw: '', redirect: false });
   const stateUpdate = (e) => setInfLogin({ ...loginState, [e.name]: e.value });
+  const dispatch = useDispatch();
+
   const PSW_MIN = 6;
   const dotCom = /^[a-z0-9._-]+@[a-z0-9]+\.com$/;
-  const isValidForm = () => loginState.psw.length >= PSW_MIN
+  const isValidForm = () => loginState.psw.length > PSW_MIN
     && dotCom.test(loginState.user);
 
   return (
@@ -30,12 +36,15 @@ const Login = () => {
         wsize="200px"
         onChange={ ({ target }) => stateUpdate(target) }
       />
-      <ButtonSD
-        data-testid="login-submit-btn"
-        disabled={ !isValidForm() }
-      >
-        Entrar
-      </ButtonSD>
+      <Link to="/foods">
+        <ButtonSD
+          data-testid="login-submit-btn"
+          onClick={ () => dispatch(userAction(loginState.user)) }
+          disabled={ !isValidForm() }
+        >
+          Entrar
+        </ButtonSD>
+      </Link>
     </div>
   );
 };
