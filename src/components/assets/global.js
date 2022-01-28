@@ -6,11 +6,16 @@ const GlobalStyle = createGlobalStyle`* {
     outline: 0;
     padding: 0;
   }
-  
+
   .loginView {
     display: grid;
   }
 
-  `;
+  .header-app {
+    display: flex;
+    height: 100%;
+    width: 30px;
+  }
+`;
 
 export default GlobalStyle;
