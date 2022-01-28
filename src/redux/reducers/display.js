@@ -1,5 +1,9 @@
 import { SEARCH_ON_OFF } from '../actions';
 
+const INITIAL_STATE = {
+  searchbtn: '',
+};
+
 const display = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case SEARCH_ON_OFF:
