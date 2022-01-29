@@ -16,6 +16,14 @@ const GlobalStyle = createGlobalStyle`* {
     height: 100%;
     width: 30px;
   }
+
+  .footer {
+    bottom: 0;
+    height: 60px;
+    position: absolute;
+    width: 100%;
+  }
+
 `;
 
 export default GlobalStyle;
