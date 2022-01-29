@@ -8,6 +8,7 @@ export const API_MEAL = {
   ingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
   nome: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
   random: 'https://www.themealdb.com/api/json/v1/1/random.php',
+  id: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
 };
 
 export const API_DRINKS = {
@@ -15,6 +16,7 @@ export const API_DRINKS = {
   nome: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
   firstletter: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=',
   random: 'https://www.thecocktaildb.com/api/json/v1/1/random.php',
+  id: 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=',
 };
 
 export const getDataApiDrinks = async (destination, query = '') => {
@@ -24,6 +26,7 @@ export const getDataApiDrinks = async (destination, query = '') => {
 };
 
 export const getDataApiMeals = async (destination, query = '') => {
+  console.log(`${API_MEAL[destination]}${query}`);
   const data = await axios.get(`${API_MEAL[destination]}${query}`)
     .then((response) => response.data);
   return data;

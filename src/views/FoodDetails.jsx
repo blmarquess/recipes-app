@@ -12,15 +12,15 @@ export default function FoodDetails() {
   };
 
   useEffect(() => {
-    console.log('effectssss"');
     const setDataState = async () => {
       if (pathId === 'random') {
-        console.log('caiu no if');
         return randomMeal().then((res) => setRandomId(res.meals));
+      }
+      if (pathId !== undefined && pathId !== '') {
+        return getDataApiMeals('id', pathId).then((res) => setRandomId(res.meals));
       }
     };
     setDataState();
-    return () => { };
   }, [pathId]);
 
   console.log(randomId);
