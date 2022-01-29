@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header';
+import HeaderProfile from '../components/HeaderNoSer';
 
 export default function FoodRecipies() {
   return (
     <div>
-      <Header />
-      sdas
+      <HeaderProfile title="FoodRecipies" />
+      <h2>teste2</h2>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../components/Header';
+import HeaderProfile from '../components/HeaderNoSer';
 
 export default function DoneRecipes() {
   return (
     <div>
-      <Header />
+      <HeaderProfile title="Done Recipes" />
       Done Recipes
     </div>
   );

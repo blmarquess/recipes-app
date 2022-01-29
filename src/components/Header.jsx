@@ -1,38 +1,38 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-// import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
-// import { switchSearch } from '../redux/actions/index';
+import ButtonOnSearch from './assets/ButtonOnSearch';
 
-export default function Header() {
+const BLACK_PATH = ['explore', 'profile'];
+
+export default function Header({ title }) {
   const history = useHistory();
-  // const dispatch = useDispatch();
 
-  function handleClick() {
-    history.push('/profile');
-  }
-
+  console.log(BLACK_PATH.includes(history.location.pathname));
   return (
     <div clasname="header-app">
-      <button
-        src={ profileIcon }
-        type="button"
-        data-testid="profile-top-btn"
-        onClick={ () => handleClick() }
-      >
-        <img src={ profileIcon } alt="teste" />
-      </button>
-      <h2 data-testid="page-title">
-        Page Title
-      </h2>
-      <button
-        src={ searchIcon }
-        type="button"
-        data-testid="search-top-btn"
-        // onClick={ () => dispatch(switchSearch()) }
-      >
-        <img src={ searchIcon } alt="teste" />
-      </button>
+      <Link to="/profile">
+        <img
+          src={ profileIcon }
+          data-testid="profile-top-btn"
+          alt="perfil-Icon"
+        />
+      </Link>
+      { title
+        && (
+          <h2 data-testid="page-title">
+            { title }
+          </h2>
+        )}
+      {
+        BLACK_PATH.includes(history.location.pathname)
+          ? <div> </div>
+          : <ButtonOnSearch />
+      }
     </div>);
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+};

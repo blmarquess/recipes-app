@@ -1,11 +1,8 @@
 import React from 'react';
-import Header from '../components/Header';
+import HeaderProfile from '../components/HeaderNoSer';
 
 export default function ExploreDrinks() {
   return (
-    <div>
-      <Header />
-      Explore Drinks
-    </div>
+    <HeaderProfile title="Explore Drinks" />
   );
 }
