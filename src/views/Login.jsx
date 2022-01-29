@@ -36,7 +36,7 @@ const Login = () => {
         wsize="200px"
         onChange={ ({ target }) => stateUpdate(target) }
       />
-      <Link to="/foods">
+      <Link to="./foods">
         <ButtonSD
           data-testid="login-submit-btn"
           onClick={ () => dispatch(userAction(loginState.user)) }

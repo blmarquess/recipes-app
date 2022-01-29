@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../components/Header';
+import HeaderProfile from '../components/HeaderNoSer';
 
 export default function Explore() {
   return (
     <div>
-      <Header />
+      <HeaderProfile title="Explore" />
       Explore recipes
     </div>
   );
