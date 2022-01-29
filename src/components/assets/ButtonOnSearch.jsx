@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import searchIcon from '../../images/searchIcon.svg';
+import SearchBar from '../SearchBar';
 
 export default () => {
   const [btnsearch, setBtnSH] = useState(false);
   return (
     <section>
-      {btnsearch
-&& <input
-  type="text"
-  data-testid="search-input"
-/>}
       <button
         src={ searchIcon }
         type="button"
@@ -18,6 +14,14 @@ export default () => {
       >
         <img src={ searchIcon } alt="profileIcon" />
       </button>
+      {
+        btnsearch
+        && (
+          <section>
+            <input type="text" data-testid="search-input" />
+            <SearchBar />
+          </section>)
+      }
     </section>
   );
 };
