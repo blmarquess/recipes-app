@@ -8,8 +8,6 @@ const BLACK_PATH = ['explore', 'profile'];
 
 export default function Header({ title }) {
   const history = useHistory();
-
-  console.log(BLACK_PATH.includes(history.location.pathname));
   return (
     <div clasname="header-app">
       <Link to="/profile">

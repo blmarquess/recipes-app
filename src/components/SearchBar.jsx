@@ -3,7 +3,7 @@ import { getDataApiDrinks } from '../utils/tools';
 import ButtonSD from './assets/ButtonSD';
 
 export default () => {
-  const [searchQuery, setSearch] = useState({ query: '', option: '' });
+  const [searchQuery, setSearch] = useState({ query: '', option: '', data: {} });
 
   const updateQuery = (key, str) => {
     setSearch({ ...searchQuery, [key]: str });
@@ -11,18 +11,19 @@ export default () => {
 
   const onClickSearch = () => {
     const { option, query } = searchQuery;
-    // const { match: { pharms}} = props;
-    getDataApiDrinks(option, query);
+    getDataApiDrinks(option, query).then((res) => updateQuery(data, res));
   };
 
   return (
     <>
+      <input type="text" data-testid="search-input" />
       <section className="radios-filter">
         <label htmlFor="ingredient">
           <input
             type="radio"
             name="option"
             id="ingredient"
+            value="ingredient"
             onChange={ ({ target: { name, value } }) => updateQuery(name, value) }
             data-testid="ingredient-search-radio"
           />
@@ -33,6 +34,7 @@ export default () => {
             type="radio"
             name="option"
             id="forName"
+            value="nome"
             onChange={ ({ target: { name, value } }) => updateQuery(name, value) }
             data-testid="name-search-radio"
           />
@@ -43,6 +45,7 @@ export default () => {
             type="radio"
             name="option"
             id="first-letter"
+            value="firstletter"
             onChange={ ({ target: { name, value } }) => updateQuery(name, value) }
             data-testid="first-letter-search-radio"
           />

@@ -14,14 +14,7 @@ export default () => {
       >
         <img src={ searchIcon } alt="profileIcon" />
       </button>
-      {
-        btnsearch
-        && (
-          <section>
-            <input type="text" data-testid="search-input" />
-            <SearchBar />
-          </section>)
-      }
+      { btnsearch && <SearchBar /> }
     </section>
   );
 };
