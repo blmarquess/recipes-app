@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 export default function DrinksIngredients() {
   return (
     <div>
-      <HeaderNoSer title="Explore Foods" />
+      <HeaderNoSer title="Explore Ingredients" />
       <Footer />
     </div>);
 }

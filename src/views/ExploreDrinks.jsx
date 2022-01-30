@@ -15,7 +15,7 @@ export default function ExploreDrinks() {
           By Ingridient
         </button>
       </Link>
-      <Link to="./explore/drinks">
+      <Link to="/drinks/random">
         <button
           data-testid="explore-surprise"
           type="button"
