@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getDataApiMeals, getDataApiDrinks } from '../utils/tools';
 import ButtonSD from './assets/ButtonSD';
-import { SearchDataAPI, setAlert } from '../redux/actions';
+import { SearchDataAPI } from '../redux/actions';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -31,11 +31,12 @@ export default function SearchBar() {
 
   const validToDispatch = () => {
     const { query, option } = searchQuery;
+    const errorMessage = 'Your search must have only 1 (one) character';
     if (query === '') {
-      return dispatch(setAlert(true));
+      return global.alert(errorMessage);
     }
-    if (option === 'first-letter' && query.length > 1) {
-      return dispatch(setAlert(true));
+    if (option === 'firstletter' && query.length > 1) {
+      return global.alert(errorMessage);
     }
     return onClickSearch();
   };
@@ -75,7 +76,7 @@ export default function SearchBar() {
           <input
             type="radio"
             name="option"
-            id="first-letter"
+            id="firstletter"
             value="firstletter"
             onChange={ ({ target: { name, value } }) => updateQuery(name, value) }
             data-testid="first-letter-search-radio"

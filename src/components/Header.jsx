@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import profileIcon from '../images/profileIcon.svg';
 import ButtonOnSearch from './assets/ButtonOnSearch';
-import AlertBS from './assets/AlertBS';
+// import AlertBS from './assets/AlertBS';
 
 export default function Header({ title }) {
-  const alertStage = useSelector((state) => state.searchdata.showalert);
+  // const alertStage = useSelector((state) => state.searchdata.showalert);
 
   return (
     <div clasname="header-app">
@@ -24,9 +24,10 @@ export default function Header({ title }) {
             { title }
           </h2>
         )}
-      {alertStage
+      <ButtonOnSearch />
+      {/* {alertStage
         ? <AlertBS />
-        : <ButtonOnSearch />}
+        : <ButtonOnSearch />} */}
     </div>);
 }
 
