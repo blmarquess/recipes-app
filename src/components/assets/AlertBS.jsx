@@ -5,9 +5,6 @@ import { setAlert } from '../../redux/actions';
 
 export default function AlertBS() {
   const dispatch = useDispatch();
-
-  const msgError = 'Your search must have only 1 (one) character';
-  global.alert(msgError);
   return (
     <Alert variant="danger" onClose={ () => dispatch(setAlert(false)) } dismissible>
       <Alert.Heading>Your search must have only 1 (one) character</Alert.Heading>
