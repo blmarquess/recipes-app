@@ -1,20 +1,21 @@
-import { SEARCH_OFF, SEARCH_ON } from '../actions';
+import { SEARCH_RESULT, ALERT_DISPLAY } from '../actions';
 
 const INITIAL_STATE = {
-  searchbtn: false,
+  data: [],
+  showalert: false,
 };
 
 const display = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case SEARCH_ON:
+  case SEARCH_RESULT:
     return {
       ...state,
-      searchbtn: true,
+      data: action.payload,
     };
-  case SEARCH_OFF:
+  case ALERT_DISPLAY:
     return {
       ...state,
-      searchbtn: false,
+      showalert: action.payload,
     };
   default:
     return state;

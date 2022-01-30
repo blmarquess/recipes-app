@@ -1,15 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import profileIcon from '../images/profileIcon.svg';
 import ButtonOnSearch from './assets/ButtonOnSearch';
-
-const BLACK_PATH = ['explore', 'profile'];
+import AlertBS from './assets/AlertBS';
 
 export default function Header({ title }) {
-  const history = useHistory();
+  const alertStage = useSelector((state) => state.searchdata.showalert);
 
-  console.log(BLACK_PATH.includes(history.location.pathname));
   return (
     <div clasname="header-app">
       <Link to="/profile">
@@ -25,11 +24,9 @@ export default function Header({ title }) {
             { title }
           </h2>
         )}
-      {
-        BLACK_PATH.includes(history.location.pathname)
-          ? <div> </div>
-          : <ButtonOnSearch />
-      }
+      {alertStage
+        ? <AlertBS />
+        : <ButtonOnSearch />}
     </div>);
 }
 
