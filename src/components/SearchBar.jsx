@@ -1,22 +1,53 @@
 import React, { useState } from 'react';
-import { getDataApiDrinks } from '../utils/tools';
+import { useDispatch } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { getDataApiMeals, getDataApiDrinks } from '../utils/tools';
 import ButtonSD from './assets/ButtonSD';
+import { SearchDataAPI, setAlert } from '../redux/actions';
 
-export default () => {
-  const [searchQuery, setSearch] = useState({ query: '', option: '', data: {} });
+export default function SearchBar() {
+  const dispatch = useDispatch();
 
-  const updateQuery = (key, str) => {
-    setSearch({ ...searchQuery, [key]: str });
-  };
+  const rota = useLocation().pathname;
+
+  const [searchQuery, setSearch] = useState({ query: '', option: '' });
+
+  const updateQuery = (key, str) => setSearch({ ...searchQuery, [key]: str });
 
   const onClickSearch = () => {
     const { option, query } = searchQuery;
-    getDataApiDrinks(option, query).then((res) => updateQuery(data, res));
+    if (rota === '/foods') {
+      getDataApiMeals(option, query).then((res) => {
+        dispatch(SearchDataAPI(res));
+      });
+    }
+
+    if (rota === '/drinks') {
+      getDataApiDrinks(option, query).then((res) => {
+        dispatch(SearchDataAPI(res));
+      });
+    }
+  };
+
+  const validToDispatch = () => {
+    const { query, option } = searchQuery;
+    if (query === '') {
+      return dispatch(setAlert(true));
+    }
+    if (option === 'first-letter' && query.length > 1) {
+      return dispatch(setAlert(true));
+    }
+    return onClickSearch();
   };
 
   return (
     <>
-      <input type="text" data-testid="search-input" />
+      <input
+        type="text"
+        data-testid="search-input"
+        name="query"
+        onChange={ ({ target: { name, value } }) => updateQuery(name, value) }
+      />
       <section className="radios-filter">
         <label htmlFor="ingredient">
           <input
@@ -52,9 +83,9 @@ export default () => {
           Primeira letra
         </label>
       </section>
-      <ButtonSD data-testid="exec-search-btn" onClick={ onClickSearch }>
+      <ButtonSD data-testid="exec-search-btn" onClick={ validToDispatch }>
         Buscar
       </ButtonSD>
     </>
   );
-};
+}
