@@ -7,7 +7,6 @@ import Input from './assets/Input';
 
 export default function SearchBar() {
   const rota = useHistory().location.pathname.replace('/', '');
-  console.log(rota);
 
   const [searchQuery, setSearch] = useState({ query: '', option: '', data: [] });
 
@@ -16,7 +15,7 @@ export default function SearchBar() {
   const onClickSearch = () => {
     const { option, query } = searchQuery;
     getDataApi(rota, option, query).then((res) => {
-      updateQuery(res);
+      updateQuery('data', res);
       saveLocalData('dataAPI', res);
     });
   };
