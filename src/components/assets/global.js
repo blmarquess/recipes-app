@@ -9,21 +9,44 @@ const GlobalStyle = createGlobalStyle`* {
 
   .loginView {
     display: grid;
+    margin: 0 auto;
+  }
+
+  .footer {
+    align-items: center;
+    bottom: 0;
+    color: white;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+  }
+
+  .default-size {
+    margin: 0 auto;
+    padding: 5px;
+    width: 360px;
+  }
+
+  .header-top {
+    display: flex;
+    flex-direction: column;
   }
 
   .header-app {
     display: flex;
-    height: 100%;
-    width: 30px;
-  }
-
-  .footer {
-    bottom: 0;
-    height: 60px;
-    position: absolute;
+    flex: wrap;
+    flex-direction: row-reverse;
+    height: 30px;
+    justify-content: space-around;
     width: 100%;
   }
 
+  .radios-filter {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export default GlobalStyle;
