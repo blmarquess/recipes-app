@@ -9,7 +9,7 @@ export default function Header({ title }) {
   const [btnsearch, setBtnSH] = useState(false);
   return (
     <div className="header-top">
-      <section clasname="header-app">
+      <section className="header-icons">
         <div>
           <Link to="/profile">
             <img

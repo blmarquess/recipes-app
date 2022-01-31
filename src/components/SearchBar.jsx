@@ -1,34 +1,24 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
-import { getDataApiMeals, getDataApiDrinks } from '../utils/tools';
-import { SearchDataAPI } from '../redux/actions';
+import { useHistory } from 'react-router-dom';
+import { getDataApi, saveLocalData } from '../utils/tools';
 
 import ButtonSD from './assets/ButtonSD';
 import Input from './assets/Input';
 
 export default function SearchBar() {
-  const dispatch = useDispatch();
+  const rota = useHistory().location.pathname.replace('/', '');
+  console.log(rota);
 
-  const rota = useLocation().pathname;
-
-  const [searchQuery, setSearch] = useState({ query: '', option: '' });
+  const [searchQuery, setSearch] = useState({ query: '', option: '', data: [] });
 
   const updateQuery = (key, str) => setSearch({ ...searchQuery, [key]: str });
 
   const onClickSearch = () => {
     const { option, query } = searchQuery;
-    if (rota === '/foods') {
-      getDataApiMeals(option, query).then((res) => {
-        dispatch(SearchDataAPI(res));
-      });
-    }
-
-    if (rota === '/drinks') {
-      getDataApiDrinks(option, query).then((res) => {
-        dispatch(SearchDataAPI(res));
-      });
-    }
+    getDataApi(rota, option, query).then((res) => {
+      updateQuery(res);
+      saveLocalData('dataAPI', res);
+    });
   };
 
   const validToDispatch = () => {

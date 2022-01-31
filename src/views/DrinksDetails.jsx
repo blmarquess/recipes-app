@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { getDataApiDrinks } from '../utils/tools';
+import { getDataApi } from '../utils/tools';
 
 export default function DrinksDetails() {
   const [drinksState, setDrinkState] = useState([{ idDrink: 'loading...' }]);
   const pathId = useLocation().pathname.split('/drinks/')[1];
 
   const randomDrink = async () => {
-    const drinkId = await getDataApiDrinks('random');
+    const drinkId = await getDataApi('random');
     return drinkId;
   };
 
@@ -17,7 +17,7 @@ export default function DrinksDetails() {
         return randomDrink().then((res) => setDrinkState(res.drinks));
       }
       if (pathId !== undefined && pathId !== '') {
-        return getDataApiDrinks('id', pathId).then((res) => setRandomId(res.drinks));
+        return getDataApi('id', pathId).then((res) => setRandomId(res.drinks));
       }
     };
     setDataState();

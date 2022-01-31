@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Layout from '../components/assets/layout';
-import { getDataApiMeals } from '../utils/tools';
+import { getDataApi } from '../utils/tools';
 
 export default function FoodDetails() {
   const [mealState, setRandomId] = useState([]);
   const pathId = useLocation().pathname.split('/foods/')[1];
 
   const randomMeal = async () => {
-    const mealId = await getDataApiMeals('random');
+    const mealId = await getDataApi('random');
     return mealId;
   };
 
@@ -18,7 +18,7 @@ export default function FoodDetails() {
         return randomMeal().then((res) => setRandomId(res.meals));
       }
       if (pathId !== undefined && pathId !== '') {
-        return getDataApiMeals('id', pathId).then((res) => setRandomId(res.meals));
+        return getDataApi('id', pathId).then((res) => setRandomId(res.meals));
       }
     };
     setDataState();
