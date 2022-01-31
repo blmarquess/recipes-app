@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import Layout from '../components/assets/layout';
 import { getDataApiMeals } from '../utils/tools';
 
 export default function FoodDetails() {
@@ -24,7 +25,7 @@ export default function FoodDetails() {
   }, [pathId]);
 
   return (
-    <div>
+    <Layout>
       {mealState.map((meal) => (
         <div
           key={ Math.random() }
@@ -58,6 +59,6 @@ export default function FoodDetails() {
       >
         Start Recipe
       </button>
-    </div>
+    </Layout>
   );
 }
