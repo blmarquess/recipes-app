@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`* {
     height: 40px;
     justify-content: space-between;
     position: fixed;
-    width: 100%;
+    width: 360px;
   }
 
   .default-size {
@@ -34,12 +34,14 @@ const GlobalStyle = createGlobalStyle`* {
     flex-direction: column;
   }
 
-  .header-app {
+  .header-icons {
+    align-items: center;
     display: flex;
     flex: wrap;
     flex-direction: row-reverse;
     height: 30px;
     justify-content: space-around;
+    padding: 6px;
     width: 100%;
   }
 
