@@ -1,33 +1,46 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
 import profileIcon from '../images/profileIcon.svg';
-import ButtonOnSearch from './assets/ButtonOnSearch';
-// import AlertBS from './assets/AlertBS';
+import searchIcon from '../images/searchIcon.svg';
+import SearchBar from './SearchBar';
 
 export default function Header({ title }) {
-  // const alertStage = useSelector((state) => state.searchdata.showalert);
-
+  const [btnsearch, setBtnSH] = useState(false);
   return (
-    <div clasname="header-app">
-      <Link to="/profile">
-        <img
-          src={ profileIcon }
-          data-testid="profile-top-btn"
-          alt="perfil-Icon"
-        />
-      </Link>
-      { title
-        && (
-          <h2 data-testid="page-title">
-            { title }
-          </h2>
-        )}
-      <ButtonOnSearch />
-      {/* {alertStage
-        ? <AlertBS />
-        : <ButtonOnSearch />} */}
+    <div className="header-top">
+      <section clasname="header-app">
+        <div>
+          <Link to="/profile">
+            <img
+              src={ profileIcon }
+              data-testid="profile-top-btn"
+              alt="perfil-Icon"
+            />
+          </Link>
+        </div>
+        <div>
+          { title
+          && (
+            <h2 data-testid="page-title">
+              { title }
+            </h2>
+          )}
+        </div>
+        <div>
+          <button
+            src={ searchIcon }
+            type="button"
+            data-testid="search-top-btn"
+            onClick={ () => setBtnSH(!btnsearch) }
+          >
+            <img src={ searchIcon } alt="profileIcon" />
+          </button>
+        </div>
+      </section>
+      <section>
+        { btnsearch && <SearchBar /> }
+      </section>
     </div>);
 }
 

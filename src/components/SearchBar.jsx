@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { getDataApiMeals, getDataApiDrinks } from '../utils/tools';
-import ButtonSD from './assets/ButtonSD';
 import { SearchDataAPI } from '../redux/actions';
+
+import ButtonSD from './assets/ButtonSD';
+import Input from './assets/Input';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -32,7 +34,7 @@ export default function SearchBar() {
   const validToDispatch = () => {
     const { query, option } = searchQuery;
     const errorMessage = 'Your search must have only 1 (one) character';
-    if (query === '') {
+    if (query === '' || option === '') {
       return global.alert(errorMessage);
     }
     if (option === 'firstletter' && query.length > 1) {
@@ -42,9 +44,10 @@ export default function SearchBar() {
   };
 
   return (
-    <>
-      <input
+    <section>
+      <Input
         type="text"
+        wsize="100%"
         data-testid="search-input"
         name="query"
         onChange={ ({ target: { name, value } }) => updateQuery(name, value) }
@@ -84,9 +87,9 @@ export default function SearchBar() {
           Primeira letra
         </label>
       </section>
-      <ButtonSD data-testid="exec-search-btn" onClick={ validToDispatch }>
+      <ButtonSD wsize="100%" data-testid="exec-search-btn" onClick={ validToDispatch }>
         Buscar
       </ButtonSD>
-    </>
+    </section>
   );
 }
