@@ -15,10 +15,12 @@ import FoodsNationalities from './views/Nationalities';
 import DoneRecipes from './views/DoneRecipes';
 import FavoriteRecipes from './views/FavoriteRecipes';
 import FoodRecipies from './views/FoodRecipies';
+import NotFound from './views/NotFound';
 
 function App() {
   return (
     <Switch>
+      <Route exact path="/explore/foods/nationalities" component={ NotFound } />
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Home } />
       <Route exact path="/drinks" component={ Drinks } />

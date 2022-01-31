@@ -7,15 +7,15 @@ export default function ExploreFoods() {
   return (
     <div>
       <HeaderProfile title="Explore Foods" />
-      <Link to="./explore/foods/ingredients">
+      <Link to="/explore/foods/ingredients">
         <button
           data-testid="explore-by-ingredient"
           type="button"
         >
-          By Ingridient
+          By Ingredient
         </button>
       </Link>
-      <Link to="./explore/foods/nationalities">
+      <Link to="/explore/foods/nationality">
         <button
           data-testid="explore-by-nationality"
           type="button"
@@ -28,7 +28,7 @@ export default function ExploreFoods() {
           data-testid="explore-surprise"
           type="button"
         >
-          Surprise Me!
+          Surprise me!
         </button>
       </Link>
       <Footer />
