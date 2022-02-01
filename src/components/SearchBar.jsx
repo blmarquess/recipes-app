@@ -6,17 +6,26 @@ import ButtonSD from './assets/ButtonSD';
 import Input from './assets/Input';
 
 export default function SearchBar() {
-  const rota = useHistory().location.pathname.replace('/', '');
+  const history = useHistory();
+  const rota = history.location.pathname.replace('/', '').replace('/', '');
+  const keyData = rota === 'foods' ? 'meals' : 'drinks';
+  const keyID = rota === 'foods' ? 'idMeal' : 'idDrink';
 
   const [searchQuery, setSearch] = useState({ query: '', option: '', data: [] });
 
   const updateQuery = (key, str) => setSearch({ ...searchQuery, [key]: str });
 
-  const onClickSearch = () => {
+  const onClickSearch = async () => {
     const { option, query } = searchQuery;
-    getDataApi(rota, option, query).then((res) => {
+    await getDataApi(rota, option, query).then((res) => {
+      if (res[keyData] === null) {
+        return global.alert('Sorry, we haven\'t found any recipes for these filters.');
+      }
       updateQuery('data', res);
       saveLocalData('dataAPI', res);
+      if (res[keyData].length === 1) {
+        history.push(`/${rota}/${res[keyData][0][keyID]}`);
+      }
     });
   };
 
