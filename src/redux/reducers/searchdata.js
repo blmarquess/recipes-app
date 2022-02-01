@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   showalert: false,
 };
 
-const display = (state = INITIAL_STATE, action) => {
+const searchdata = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case SEARCH_RESULT:
     saveLocalData('dataAPI', { meals: action.payload });
@@ -24,4 +24,4 @@ const display = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default display;
+export default searchdata;
