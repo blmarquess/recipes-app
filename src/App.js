@@ -10,7 +10,7 @@ import Explore from './views/Explore';
 import ExploreFoods from './views/ExploreFoods';
 import ExploreDrinks from './views/ExploreDrinks';
 import DrinksIngredients from './views/DrinksIngredients';
-import FoodsNationalities from './views/Nationalities';
+import Nationalities from './views/Nationalities';
 import DoneRecipes from './views/DoneRecipes';
 import FavoriteRecipes from './views/FavoriteRecipes';
 import FoodRecipies from './views/FoodRecipies';
@@ -19,7 +19,7 @@ import NotFound from './views/NotFound';
 function App() {
   return (
     <Switch>
-      <Route exact path="/explore/foods/nationalities" component={ NotFound } />
+      <Route exact path="404" component={ NotFound } />
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Home } />
       <Route exact path="/drinks" component={ Drinks } />
@@ -32,7 +32,7 @@ function App() {
       <Route exact path="/explore/drinks" component={ ExploreDrinks } />
       <Route exact path="/explore/drinks/ingredients" component={ DrinksIngredients } />
       <Route exact path="/explore/foods/ingredients" component={ DrinksIngredients } />
-      <Route exact path="/explore/foods/nationalities" component={ FoodsNationalities } />
+      <Route exact path="/explore/foods/nationalities" component={ Nationalities } />
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
