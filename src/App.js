@@ -4,8 +4,7 @@ import Login from './views/Login';
 import Home from './views/Home';
 import Profile from './views/Profile';
 import Drinks from './views/Drinks';
-import FoodDetails from './views/FoodDetails';
-import DrinksDetails from './views/DrinksDetails';
+import Details from './views/Details';
 import DrinksRecipies from './views/DrinksRecipies';
 import Explore from './views/Explore';
 import ExploreFoods from './views/ExploreFoods';
@@ -24,8 +23,8 @@ function App() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Home } />
       <Route exact path="/drinks" component={ Drinks } />
-      <Route path="/foods/:id" render={ (props) => <FoodDetails { ...props } /> } />
-      <Route path="/drinks/:id" render={ (props) => <DrinksDetails { ...props } /> } />
+      <Route path="/foods/:id" render={ (props) => <Details { ...props } /> } />
+      <Route path="/drinks/:id" render={ (props) => <Details { ...props } /> } />
       <Route path="/foods/:id/in-progress" component={ FoodRecipies } />
       <Route path="/drnks/:id/in-progress" component={ DrinksRecipies } />
       <Route exact path="/explore" component={ Explore } />
