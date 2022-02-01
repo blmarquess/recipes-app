@@ -7,12 +7,12 @@ export default function ExploreDrinks() {
   return (
     <div>
       <HeaderProfile title="Explore Drinks" />
-      <Link to="./explore/foods/ingredients">
+      <Link to="/explore/drinks/ingredients">
         <button
           data-testid="explore-by-ingredient"
           type="button"
         >
-          By Ingridient
+          By Ingredient
         </button>
       </Link>
       <Link to="/drinks/random">
@@ -20,7 +20,7 @@ export default function ExploreDrinks() {
           data-testid="explore-surprise"
           type="button"
         >
-          Surprise Me!
+          Surprise me!
         </button>
       </Link>
       <Footer />

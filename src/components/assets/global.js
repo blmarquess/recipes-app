@@ -9,21 +9,46 @@ const GlobalStyle = createGlobalStyle`* {
 
   .loginView {
     display: grid;
-  }
-
-  .header-app {
-    display: flex;
-    height: 100%;
-    width: 30px;
+    margin: 0 auto;
   }
 
   .footer {
+    align-items: center;
     bottom: 0;
-    height: 60px;
-    position: absolute;
+    color: white;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    position: fixed;
+    width: 360px;
+  }
+
+  .default-size {
+    margin: 0 auto;
+    padding: 5px;
+    width: 360px;
+  }
+
+  .header-top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-icons {
+    align-items: center;
+    display: flex;
+    flex: wrap;
+    flex-direction: row-reverse;
+    height: 30px;
+    justify-content: space-around;
+    padding: 6px;
     width: 100%;
   }
 
+  .radios-filter {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 export default GlobalStyle;

@@ -1,31 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { getDataApiMeals } from '../utils/tools';
+import React from 'react';
 
-export default function FoodDetails() {
-  const [mealState, setRandomId] = useState([]);
-  const pathId = useLocation().pathname.split('/foods/')[1];
-
-  const randomMeal = async () => {
-    const mealId = await getDataApiMeals('random');
-    return mealId;
-  };
-
-  useEffect(() => {
-    const setDataState = async () => {
-      if (pathId === 'random') {
-        return randomMeal().then((res) => setRandomId(res.meals));
-      }
-      if (pathId !== undefined && pathId !== '') {
-        return getDataApiMeals('id', pathId).then((res) => setRandomId(res.meals));
-      }
-    };
-    setDataState();
-  }, [pathId]);
+export default function FoodDetail() {
+  // const [mealState, setRandomId] = useState([]);
 
   return (
     <div>
-      {mealState.map((meal) => (
+      {/* {mealState.map((meal) => (
         <div
           key={ Math.random() }
         >
@@ -35,10 +15,10 @@ export default function FoodDetails() {
         </div>
       ))}
       <h3>Ingredients</h3>
-      {/* {mealState
+      {mealState
         .filter((mealIgr, i) => (`${mealIgr.strIngredient}${i}` !== null || ''
         ? (<span>{`${mealIgr.strIngredient}${i}`}</span>) : null
-      ))} */}
+      ))}
       <h3>Instructions</h3>
       {mealState.map((mealInst) => (
         <p key={ Math.random() }>
@@ -52,7 +32,7 @@ export default function FoodDetails() {
         allowFullScreen
         title="video"
         data-testid="video"
-      />}
+      />} */}
       <button
         type="button"
       >

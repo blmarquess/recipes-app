@@ -9,10 +9,11 @@ const ButtonSD = styled.button`align-self: center;
   font-size: ${({ fontesize }) => fontesize || '22px'};
   font-weight: 600;
   height: 40px;
+  margin: ${(props) => props.msize || '0'};
   outline: none;
   padding: 0 1rem;
   text-align: center;
-  width: 300px;
+  width: ${(props) => props.wsize || 'auto'};
 
   &:disabled {
     opacity: 0.6;

@@ -30,3 +30,4 @@ cypress/videos/
 cypress/reports
 yarn.lock
 package-lock.json
+package-lock.json.backup

@@ -23,6 +23,7 @@
     "react-logger": "^1.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "styled-components": "^5.3.3",
@@ -66,8 +67,6 @@
     "mochawesome": "^6.1.1",
     "mochawesome-merge": "^4.1.0",
     "mochawesome-report-generator": "^5.1.0",
-    "react-redux": "^7.2.6",
-    "redux": "^4.1.2",
     "redux-devtools": "^3.7.0",
     "stylelint": "^13.8.0",
     "stylelint-order": "^4.1.0"
