@@ -9,7 +9,6 @@ export default function Header({ title }) {
   const pathname = useLocation().pathname.replace('/', '');
   const pageTitle = pathname[0].toUpperCase() + pathname.slice(1)
     .toLowerCase();
-  console.log(pageTitle);
 
   const [btnsearch, setBtnSH] = useState(false);
   return (

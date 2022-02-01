@@ -5,7 +5,7 @@ export default function FoodDetail() {
 
   return (
     <div>
-      {mealState.map((meal) => (
+      {/* {mealState.map((meal) => (
         <div
           key={ Math.random() }
         >
@@ -15,10 +15,10 @@ export default function FoodDetail() {
         </div>
       ))}
       <h3>Ingredients</h3>
-      {/* {mealState
+      {mealState
         .filter((mealIgr, i) => (`${mealIgr.strIngredient}${i}` !== null || ''
         ? (<span>{`${mealIgr.strIngredient}${i}`}</span>) : null
-      ))} */}
+      ))}
       <h3>Instructions</h3>
       {mealState.map((mealInst) => (
         <p key={ Math.random() }>
@@ -32,7 +32,7 @@ export default function FoodDetail() {
         allowFullScreen
         title="video"
         data-testid="video"
-      />}
+      />} */}
       <button
         type="button"
       >
