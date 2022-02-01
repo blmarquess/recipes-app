@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getDataApi, saveLocalData } from '../utils/tools';
+import { getDataApi } from '../utils/tools';
+import { SearchDataAPI } from '../redux/actions';
 
 import ButtonSD from './assets/ButtonSD';
 import Input from './assets/Input';
 
 export default function SearchBar() {
+  const dispatch = useDispatch();
   const history = useHistory();
   const rota = history.location.pathname.replace('/', '').replace('/', '');
   const keyData = rota === 'foods' ? 'meals' : 'drinks';
@@ -21,8 +24,8 @@ export default function SearchBar() {
       if (res[keyData] === null) {
         return global.alert('Sorry, we haven\'t found any recipes for these filters.');
       }
+      dispatch(SearchDataAPI(res[keyData]));
       updateQuery('data', res);
-      saveLocalData('dataAPI', res);
       if (res[keyData].length === 1) {
         history.push(`/${rota}/${res[keyData][0][keyID]}`);
       }

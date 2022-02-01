@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 const display = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case SEARCH_RESULT:
-    saveLocalData('ResultlsAPI', { meals: action.payload });
+    saveLocalData('dataAPI', { meals: action.payload });
     return {
       ...state,
       data: action.payload,
