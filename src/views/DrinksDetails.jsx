@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { getDataApi } from '../utils/tools';
 
 export default function DrinksDetails() {
-  const [drinksState, setDrinkState] = useState([{ idDrink: 'loading...' }]);
+  // const [drinksState, setDrinkState] = useState([{ idDrink: 'loading...' }]);
   const pathId = useLocation().pathname.split('/drinks/')[1];
 
   const randomDrink = async () => {
@@ -24,8 +24,6 @@ export default function DrinksDetails() {
   }, [pathId]);
 
   return (
-    <div>
-      
-    </div>
+    <div />
   );
 }
