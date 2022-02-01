@@ -15,14 +15,14 @@ export default function Profile() {
         {Email.email}
       </h2>
       <Link to="/done-recipes">
-        <button type="button" data-testid="profile-done-btn">Done receipes</button>
+        <button type="button" data-testid="profile-done-btn">Done Recipes</button>
       </Link>
       <Link to="/favorite-recipes">
         <button
           type="button"
           data-testid="profile-favorite-btn"
         >
-          Favorite receipes
+          Favorite Recipes
         </button>
       </Link>
       <Link to="/">
