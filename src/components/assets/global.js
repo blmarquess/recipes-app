@@ -49,6 +49,31 @@ const GlobalStyle = createGlobalStyle`* {
     display: flex;
     justify-content: space-between;
   }
+
+  .displayCard {
+    align-items: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 360px;
+    padding: 12px;
+  }
+
+  .card {
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 150px;
+  }
+
+  .card-img {
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+  }
+
+
 `;
 
 export default GlobalStyle;

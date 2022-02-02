@@ -10,7 +10,7 @@ export default function DisplayCards() {
   const inMeals = rota.pathname.includes('foods');
   const inDrinks = rota.pathname.includes('drinks');
   return (
-    <div>
+    <section className="displayCard">
       {inMeals && dataToDysplay.map((item, index) => (
         <Card
           key={ item.idMeal }
@@ -25,6 +25,6 @@ export default function DisplayCards() {
           srcName={ item.strDrink }
           imgSRC={ item.strDrinkThumb }
         />))}
-    </div>
+    </section>
   );
 }

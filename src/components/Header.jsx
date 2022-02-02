@@ -41,7 +41,8 @@ export default function Header({ title }) {
       <section>
         { btnsearch && <SearchBar /> }
       </section>
-    </div>);
+    </div>
+  );
 }
 
 Header.propTypes = {
