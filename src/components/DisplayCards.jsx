@@ -1,22 +1,30 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import CardDrinks from './assets/CardDrinks';
-import CardMeals from './assets/CardMeals';
+import Card from './assets/Card';
 
 export default function DisplayCards() {
-  const dataToDisplay = useSelector((state) => state.searchdata.data);
+  const dataToDysplay = useSelector((state) => state.searchdata.data).slice(0, +'12');
   const rota = useLocation();
-  console.log('Fisrt:', dataToDisplay, 'Parms: ', rota);
 
   const inMeals = rota.pathname.includes('foods');
   const inDrinks = rota.pathname.includes('drinks');
-  console.log(inMeals);
-  console.log(inDrinks);
   return (
     <div>
-      {inMeals && <CardMeals />}
-      {inDrinks && <CardDrinks />}
+      {inMeals && dataToDysplay.map((item, index) => (
+        <Card
+          key={ item.idMeal }
+          index={ index }
+          srcName={ item.strMeal }
+          imgSRC={ item.strMealThumb }
+        />))}
+      {inDrinks && dataToDysplay.map((item, index) => (
+        <Card
+          key={ item.idDrink }
+          index={ index }
+          srcName={ item.strDrink }
+          imgSRC={ item.strDrinkThumb }
+        />))}
     </div>
   );
 }
