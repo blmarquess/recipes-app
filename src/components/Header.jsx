@@ -1,15 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
 export default function Header({ title }) {
-  const pathname = useLocation().pathname.replace('/', '');
-  const pageTitle = pathname[0].toUpperCase() + pathname.slice(1)
-    .toLowerCase();
-
   const [btnsearch, setBtnSH] = useState(false);
   return (
     <div className="header-top">
@@ -27,7 +23,7 @@ export default function Header({ title }) {
           { title
           && (
             <h2 data-testid="page-title">
-              { title || pageTitle }
+              { title }
             </h2>
           )}
         </div>
@@ -45,7 +41,8 @@ export default function Header({ title }) {
       <section>
         { btnsearch && <SearchBar /> }
       </section>
-    </div>);
+    </div>
+  );
 }
 
 Header.propTypes = {

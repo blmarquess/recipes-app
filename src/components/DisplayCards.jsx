@@ -1,30 +1,30 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Card from './assets/Card';
 
 export default function DisplayCards() {
-  const dataToDisplay = useSelector((state) => state.searchdata.data);
-  const rota = useHistory();
-  console.log('Fisrt:', dataToDisplay);
+  const dataToDysplay = useSelector((state) => state.searchdata.data).slice(0, +'12');
+  const rota = useLocation();
 
-  const renderOrRouter = () => {
-    if (dataToDisplay === null) {
-      console.log('Fisrt IF:', dataToDisplay);
-      return global.alert('"Sorry, we haven"t found any recipes for these filters.');
-    }
-    if (dataToDisplay.meals && dataToDisplay.meals.length === 1) {
-      console.log('Second IF:', dataToDisplay);
-      return rota.push(dataToDisplay.meals[0].idMeal);
-    }
-  };
-  renderOrRouter();
-
+  const inMeals = rota.pathname.includes('foods');
+  const inDrinks = rota.pathname.includes('drinks');
   return (
-    <div>
-      {dataToDisplay.meals && dataToDisplay.meals.length === 1
-        ? rota.push(dataToDisplay.meals.idMeal)
-        : dataToDisplay.meals.map((item, index) => <Card key={ index } { ...item } />) }
-    </div>
+    <section className="displayCard">
+      {inMeals && dataToDysplay.map((item, index) => (
+        <Card
+          key={ item.idMeal }
+          index={ index }
+          srcName={ item.strMeal }
+          imgSRC={ item.strMealThumb }
+        />))}
+      {inDrinks && dataToDysplay.map((item, index) => (
+        <Card
+          key={ item.idDrink }
+          index={ index }
+          srcName={ item.strDrink }
+          imgSRC={ item.strDrinkThumb }
+        />))}
+    </section>
   );
 }

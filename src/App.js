@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import Login from './views/Login';
 import Home from './views/Home';
 import Profile from './views/Profile';
-import Drinks from './views/Drinks';
 import Details from './views/Details';
 import DrinksRecipies from './views/DrinksRecipies';
 import Explore from './views/Explore';
@@ -16,13 +15,13 @@ import FavoriteRecipes from './views/FavoriteRecipes';
 import FoodRecipies from './views/FoodRecipies';
 import NotFound from './views/NotFound';
 
-function App() {
+export default function App() {
   return (
     <Switch>
       <Route exact path="404" component={ NotFound } />
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Home } />
-      <Route exact path="/drinks" component={ Drinks } />
+      <Route exact path="/drinks" component={ Home } />
       <Route path="/foods/:id" render={ (props) => <Details { ...props } /> } />
       <Route path="/drinks/:id" render={ (props) => <Details { ...props } /> } />
       <Route path="/foods/:id/in-progress" component={ FoodRecipies } />
@@ -39,5 +38,3 @@ function App() {
     </Switch>
   );
 }
-
-export default App;
