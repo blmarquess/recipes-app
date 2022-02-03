@@ -13,6 +13,7 @@ import Nationalities from './views/Nationalities';
 import DoneRecipes from './views/DoneRecipes';
 import FavoriteRecipes from './views/FavoriteRecipes';
 import FoodRecipies from './views/FoodRecipies';
+import Surprise from './views/Surprise';
 import NotFound from './views/NotFound';
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
       <Route path="/foods/:id/in-progress" component={ FoodRecipies } />
       <Route path="/drnks/:id/in-progress" component={ DrinksRecipies } />
       <Route exact path="/explore" component={ Explore } />
+      <Route exact path="/surprise/:id" component={ Surprise } />
       <Route exact path="/explore/foods" component={ ExploreFoods } />
       <Route exact path="/explore/drinks" component={ ExploreDrinks } />
       <Route exact path="/explore/drinks/ingredients" component={ DrinksIngredients } />

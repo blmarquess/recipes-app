@@ -35,3 +35,14 @@ export const getDataApi = async (rota, destination, query) => {
   const result = await fetch(`${setURL}${query}`).then((response) => response.json());
   return result;
 };
+
+export const redirectToID = (id) => {
+  if (id.meals) {
+    const { idMeal } = id.meals[0];
+    return `/foods/${idMeal}`;
+  }
+  if (id.drinks) {
+    const { idDrink } = id.drinks[0];
+    return `/drinks/${idDrink}`;
+  }
+};
