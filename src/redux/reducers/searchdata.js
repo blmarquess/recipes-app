@@ -16,7 +16,7 @@ const searchdata = (state = INITIAL_STATE, action) => {
       data: action.payload,
     };
   case SEARCH_RANDOM:
-    saveLocalData('randomItem', { random: action.payload });
+    saveLocalData('DetailItem', action.payload);
     return {
       ...state,
       random: action.payload,
