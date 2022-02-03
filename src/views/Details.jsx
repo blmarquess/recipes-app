@@ -1,34 +1,34 @@
-import React from 'react';
-// import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import Layout from '../components/assets/layout';
-// import { getDataApi } from '../utils/tools';
-// import FoodDetail from '../components/FoodDetail';
-// import DrinkDetails from '../components/DrinkDetails';
+import Layout from '../components/assets/Layout';
+import FoodDetail from '../components/FoodDetail';
+import DrinkDetails from '../components/DrinkDetails';
 
 export default function Details() {
-  // const [detailState, setDetailState] = useState([]);
-  const pathId = useLocation().pathname.split('/foods/')[1];
+  // const { id } = useParams();
+  const rota = useLocation().pathname.replace('/', '').split('/')[0];
+  const objSelector = rota.includes('drinks') ? 'drinks' : 'meals';
+  const data = useSelector((state) => state.searchdata.random);
 
-  // useEffect(() => {
-  //   const setDataState = async () => {
-  //     if (pathId === 'random') {
-  //       return getDataApi(pathId, 'random').then((res) => setDetailState(res));
-  //     }
-  //     if (pathId !== undefined && pathId !== '') {
-  //       return getDataApi('id', pathId).then((res) => setDetailState(res));
-  //     }
-  //   };
+  useEffect(() => { });
+  // console.log('testes');
+  // const setDataState = async () => getDataApi(rota, 'id', id).then((res) => {
+  //   dispatch(SearchRandomAPI(res));
+  // });
+
+  // if (data[objSelector][0]) {
   //   setDataState();
-  // }, [pathId]);
+  // }
+  // }, [id, rota, objSelector, data]);
+  // console.log(data[objSelector][0]);
 
   return (
     <Layout>
-      <p>
-        {pathId}
-      </p>
-      {/* <FoodDetail { ...detailState } />
-      <DrinkDetails { ...detailState } /> */}
+      { data.length > 0
+        && rota === 'foods'
+        ? <FoodDetail { ...data[objSelector][0] } />
+        : <DrinkDetails { ...data[objSelector][0] } />}
     </Layout>
   );
 }

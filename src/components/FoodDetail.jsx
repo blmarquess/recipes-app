@@ -1,43 +1,55 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function FoodDetail() {
-  // const [mealState, setRandomId] = useState([]);
+export default function FoodDetail(props) {
+  const {
+    strMealThumb,
+    strMeal,
+    strCategory,
+    strIngredient,
+    strInstructions,
+    strYoutube,
+  } = props;
 
   return (
-    <div>
-      {/* {mealState.map((meal) => (
-        <div
-          key={ Math.random() }
-        >
-          <img src={ meal.strMealThumb } alt={ meal.strMeal } />
-          <h2>{ meal.strMeal }</h2>
-          <h6>{ meal.strCategory }</h6>
-        </div>
-      ))}
-      <h3>Ingredients</h3>
-      {mealState
-        .filter((mealIgr, i) => (`${mealIgr.strIngredient}${i}` !== null || ''
-        ? (<span>{`${mealIgr.strIngredient}${i}`}</span>) : null
-      ))}
-      <h3>Instructions</h3>
-      {mealState.map((mealInst) => (
-        <p key={ Math.random() }>
-          {mealInst.strInstructions}
-        </p>))}
-      <h3>Vídeo</h3>
-      {mealState.length > 0
-      && <iframe
-        src={ `https://www.youtube.com/embed/${mealState[0].strYoutube.split('v=')[1]}` }
-        frameBorder="0"
-        allowFullScreen
-        title="video"
-        data-testid="video"
-      />} */}
+    <>
+      <section>
+        <img src={ strMealThumb } alt={ strMeal } />
+        <h2>{ strMeal }</h2>
+        <h6>{ strCategory }</h6>
+      </section>
+      <section>
+        <section>
+          <h3>Ingredients</h3>
+          <p>{ strIngredient }</p>
+        </section>
+        <h3>Instructions</h3>
+        <p>{ strInstructions }</p>
+      </section>
+      <section>
+        <h3>Video</h3>
+        <iframe
+          src={ strYoutube.replace('watch?v=', 'embed/') }
+          frameBorder="0"
+          allowFullScreen
+          title="video"
+          data-testid="video"
+        />
+      </section>
       <button
         type="button"
       >
         Start Recipe
       </button>
-    </div>
+    </>
   );
 }
+
+FoodDetail.propTypes = {
+  strCategory: PropTypes.string,
+  strIngredient: PropTypes.string,
+  strInstructions: PropTypes.string,
+  strMeal: PropTypes.string,
+  strMealThumb: PropTypes.string,
+  strYoutube: PropTypes.string,
+}.isRequired;

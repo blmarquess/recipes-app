@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getDataApi } from '../utils/tools';
-import { SearchDataAPI } from '../redux/actions';
+import { SearchDataAPI, SearchRandomAPI } from '../redux/actions';
 
 import ButtonSD from './assets/ButtonSD';
 import Input from './assets/Input';
@@ -27,6 +27,7 @@ export default function SearchBar() {
       dispatch(SearchDataAPI(res[keyData]));
       updateQuery('data', res);
       if (res[keyData].length === 1) {
+        dispatch(SearchRandomAPI(res[keyData]));
         history.push(`/${rota}/${res[keyData][0][keyID]}`);
       }
     });
