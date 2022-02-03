@@ -32,7 +32,8 @@ export const getImages = (item) => `${URL_IMGS}${item}.png`;
 
 export const getDataApi = async (rota, destination, query) => {
   const setURL = URL.find((el) => el.id === rota)[rota][destination];
-  const result = await fetch(`${setURL}${query}`).then((response) => response.json());
+  const result = await fetch(`${setURL}${query}`)
+    .then((response) => response.json()).then((data) => data);
   return result;
 };
 
