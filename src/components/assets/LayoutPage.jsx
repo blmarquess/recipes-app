@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Layout = styled.section`display: flex;
+const LayoutPage = styled.section`display: flex;
 
   @media ( min-width : 200px ) and ( max-width : 1600px ) {
     display: flex;
@@ -11,4 +11,4 @@ const Layout = styled.section`display: flex;
   }
 `;
 
-export default Layout;
+export default LayoutPage;
