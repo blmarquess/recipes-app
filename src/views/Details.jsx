@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import Layout from '../components/assets/Layout';
+import LayoutPage from '../components/assets/LayoutPage';
 import FoodDetail from '../components/FoodDetail';
 import DrinkDetails from '../components/DrinkDetails';
 
@@ -24,11 +24,11 @@ export default function Details() {
   // console.log(data[objSelector][0]);
 
   return (
-    <Layout>
+    <LayoutPage>
       { data.length > 0
         && rota === 'foods'
         ? <FoodDetail { ...data[objSelector][0] } />
         : <DrinkDetails { ...data[objSelector][0] } />}
-    </Layout>
+    </LayoutPage>
   );
 }
