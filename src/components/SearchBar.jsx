@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getDataApi } from '../utils/tools';
+import { getDataApi, redirectToID } from '../utils/tools';
 import { SearchDataAPI, SearchRandomAPI } from '../redux/actions';
 
 import ButtonSD from './assets/ButtonSD';
@@ -12,7 +12,7 @@ export default function SearchBar() {
   const history = useHistory();
   const rota = history.location.pathname.replace('/', '').replace('/', '');
   const keyData = rota === 'foods' ? 'meals' : 'drinks';
-  const keyID = rota === 'foods' ? 'idMeal' : 'idDrink';
+  // const keyID = rota === 'foods' ? 'idMeal' : 'idDrink';
 
   const [searchQuery, setSearch] = useState({ query: '', option: '', data: [] });
 
@@ -27,8 +27,9 @@ export default function SearchBar() {
       dispatch(SearchDataAPI(res[keyData]));
       updateQuery('data', res);
       if (res[keyData].length === 1) {
-        dispatch(SearchRandomAPI(res[keyData]));
-        history.push(`/${rota}/${res[keyData][0][keyID]}`);
+        dispatch(SearchRandomAPI(res));
+        const nreRota = redirectToID(res);
+        history.push(nreRota);
       }
     });
   };
