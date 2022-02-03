@@ -1,23 +1,27 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
 export default function Header({ title }) {
   const [btnsearch, setBtnSH] = useState(false);
+  const history = useHistory();
   return (
     <div className="header-top">
       <section className="header-icons">
         <div>
-          <Link to="/profile">
+          <button
+            type="button"
+            onClick={ () => history.push('/profile') }
+          >
             <img
               src={ profileIcon }
               data-testid="profile-top-btn"
               alt="perfil-Icon"
             />
-          </Link>
+          </button>
         </div>
         <div>
           { title
