@@ -1,27 +1,32 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Layout from '../components/assets/Layout';
 import FoodDetail from '../components/FoodDetail';
 import DrinkDetails from '../components/DrinkDetails';
 
 export default function Details() {
-  const { id } = useParams();
+  // const { id } = useParams();
   const rota = useLocation().pathname.replace('/', '').split('/')[0];
   const objSelector = rota.includes('drinks') ? 'drinks' : 'meals';
   const data = useSelector((state) => state.searchdata.random);
 
-  useEffect(() => {
-    if (data !== undefined) {
-      return console.log('data: ', data[objSelector]);
-    }
+  useEffect(() => { });
+  // console.log('testes');
+  // const setDataState = async () => getDataApi(rota, 'id', id).then((res) => {
+  //   dispatch(SearchRandomAPI(res));
+  // });
 
-    getDataToDispatch();
-  }, [data, id, objSelector]);
+  // if (data[objSelector][0]) {
+  //   setDataState();
+  // }
+  // }, [id, rota, objSelector, data]);
+  // console.log(data[objSelector][0]);
 
   return (
     <Layout>
-      {rota === 'foods'
+      { data.length > 0
+        && rota === 'foods'
         ? <FoodDetail { ...data[objSelector][0] } />
         : <DrinkDetails { ...data[objSelector][0] } />}
     </Layout>
