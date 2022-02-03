@@ -19,7 +19,6 @@ import NotFound from './views/NotFound';
 export default function App() {
   return (
     <Switch>
-      <Route exact path="404" component={ NotFound } />
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Home } />
       <Route exact path="/drinks" component={ Home } />
@@ -37,6 +36,7 @@ export default function App() {
       <Route exact path="/profile" component={ Profile } />
       <Route exact path="/done-recipes" component={ DoneRecipes } />
       <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
+      <Route exact path="*" component={ NotFound } />
     </Switch>
   );
 }
