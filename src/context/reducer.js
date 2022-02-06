@@ -8,7 +8,7 @@ export default function reducer(state, action) {
     saveLocalData('cocktailsToken', 1);
     return { ...state, user: { email: action.payload } };
   case 'IN_FOCO':
-    saveLocalData('DetailItem', { foco: action.payload });
+    saveLocalData('DetailItem', { recipefocus: action.payload });
     return { ...state, recipefocus: action.payload };
   case 'RECIPES_LIST':
     saveLocalData('RecipesList', { recipeslist: action.payload });
