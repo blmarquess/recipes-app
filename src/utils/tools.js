@@ -61,3 +61,5 @@ export const getLocalCofocusID = (data, rota) => {
   }
   return numAleatoreo;
 };
+
+export const clearFocusItem = () => localStorage.removeItem('DetailItem');
