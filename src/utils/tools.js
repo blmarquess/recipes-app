@@ -50,3 +50,14 @@ export const redirectToID = (id) => {
     return `/drinks/${idDrink}`;
   }
 };
+
+export const getLocalCofocusID = (data, rota) => {
+  const numAleatoreo = 58457441;
+  if (rota === 'meals' && data.recipefocus.meals) {
+    return data.recipefocus.meals[0].idMeal;
+  }
+  if (rota === 'drinks' && data.recipefocus.drinks) {
+    return data.recipefocus.drinks[0].idDrink;
+  }
+  return numAleatoreo;
+};
