@@ -29,10 +29,15 @@ export default function FoodDetail(props) {
       <section>
         <h3>Video</h3>
         <iframe
+          width="360"
+          height="240"
+          id="ytplayer"
+          type="text/html"
           src={ strYoutube.replace('watch?v=', 'embed/') }
           frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
           allowFullScreen
-          title="video"
+          title="YouTube video player"
           data-testid="video"
         />
       </section>

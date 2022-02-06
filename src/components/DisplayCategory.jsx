@@ -12,14 +12,17 @@ export default function DisplayCategory(props) {
 
   return (
     <section className="displayCard">
-      {inMeals && meals.slice(0, +'5').map((meall, index) => (
-        <CategoryCard
-          key={ Math.random() }
-          index={ index }
-          srcName={ meall.strCategory }
-        />))}
+      {inMeals
+        && meals
+        && meals.slice(0, +'5').map((meall, index) => (
+          <CategoryCard
+            key={ Math.random() }
+            index={ index }
+            srcName={ meall.strCategory }
+          />))}
 
       {inDrinks
+        && drinks
         && drinks.slice(0, +'5').map((drink, index) => (
           <CategoryCard
             key={ Math.random() }
