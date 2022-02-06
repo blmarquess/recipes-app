@@ -11,8 +11,8 @@ export default function reducer(state, action) {
     saveLocalData('DetailItem', { foco: action.payload });
     return { ...state, recipefocus: action.payload };
   case 'RECIPES_LIST':
-    saveLocalData('RecipesList', { RecipesList: action.payload });
-    return { ...state, RecipesList: action.payload };
+    saveLocalData('RecipesList', { recipeslist: action.payload });
+    return { ...state, recipeslist: action.payload };
   default: return state;
   }
 }
