@@ -12,7 +12,7 @@ export default function reducer(state, action) {
     return { ...state, recipefocus: action.payload };
   case 'RECIPES_LIST':
     saveLocalData('RecipesList', { RecipesList: action.payload });
-    return { ...state, recipefocus: action.payload };
+    return { ...state, RecipesList: action.payload };
   default: return state;
   }
 }
