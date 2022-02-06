@@ -17,7 +17,6 @@ export const initStore = {
 
 const StoreProvider = ({ children }) => {
   const [store, dispatch] = useReducer(reducer, initStore);
-  // const [recipies, dispetRL] = useReducer([]);
 
   useEffect(() => {
     const upData = (dat) => dispatch(recipesListAPI(dat));
