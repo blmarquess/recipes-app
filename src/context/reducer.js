@@ -13,6 +13,9 @@ export default function reducer(state, action) {
   case 'RECIPES_LIST':
     saveLocalData('RecipesList', { recipeslist: action.payload });
     return { ...state, recipeslist: action.payload };
+  case 'CATEGORY_LIST':
+    saveLocalData('RecipesCategory', { recipescategory: action.payload });
+    return { ...state, recipescategory: action.payload };
   default: return state;
   }
 }
