@@ -14,6 +14,7 @@ export const initStore = {
   inprogress: [],
   recipeslist: [],
   recipescategory: [],
+  hasfilter: '',
 };
 
 const StoreProvider = ({ children }) => {
