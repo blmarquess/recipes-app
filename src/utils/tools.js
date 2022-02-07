@@ -1,6 +1,7 @@
 export const readLocalData = (data) => JSON.parse(localStorage.getItem(data));
 export const saveLocalData = (keyDB, object) => localStorage
   .setItem(keyDB, JSON.stringify(object));
+export const clearFocusItem = () => localStorage.removeItem('DetailItem');
 export const dataCleaner = () => localStorage.clear();
 
 export const URL = [
@@ -12,6 +13,7 @@ export const URL = [
       firstletter: 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
       id: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
       categorias: 'https://www.themealdb.com/api/json/v1/1/list.php?c=list',
+      categorylist: 'https://www.themealdb.com/api/json/v1/1/filter.php?c=',
       nacionalidades: 'https://www.themealdb.com/api/json/v1/1/list.php?a=list',
       ingredientes: 'https://www.themealdb.com/api/json/v1/1/list.php?i=list',
       all: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
@@ -20,6 +22,7 @@ export const URL = [
     drinks: {
       ingredient: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=',
       categorias: 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list',
+      categorylist: 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=',
       ingredientid: 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?iid=',
       nome: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
       firstletter: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=',
@@ -65,4 +68,13 @@ export const getLocalCofocusID = (data, rota) => {
 export const refactoryYtUrl = (url) => url
   .replace('youtube.com/watch?v=', 'youtube-nocookie.com/embed/');
 
-export const clearFocusItem = () => localStorage.removeItem('DetailItem');
+export const makeCategoriList = (args) => Object.values([...args[objSelector]
+  .slice(0, '+5')])
+  .reduce((acc, crv) => Object.assign(acc, { [crv.strCategory]: false }), {});
+
+export const setFilterCategory = (objFilter) => {
+  const situation = Object.values(objFilter).every((arr) => arr);
+  if (situation) {
+    return console.log('true');
+  } return console.log('false');
+};
