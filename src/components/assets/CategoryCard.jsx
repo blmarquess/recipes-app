@@ -9,6 +9,7 @@ export default function CategoryCard(props) {
     <section className="card">
       <button
         type="button"
+        onClick={ ({ target }) => console.log(target) }
         data-testid={ `${srcName}-category-filter` }
       >
         { srcName }
