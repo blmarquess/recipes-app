@@ -32,15 +32,15 @@ export default function DisplayCards() {
     getDrinks();
   }, [inDrinks, inMeals, dispatch, store.recipeslist.meals, store.recipeslist.drinks]);
 
-  const pushTo = (keyID) => {
+  const pushTo = async (keyID) => {
     if (inDrinks) {
       const recipDri = store.recipeslist.drinks.find(({ idDrink }) => idDrink === keyID);
-      dispatch(recipeInFoco(recipDri));
+      await dispatch(recipeInFoco(recipDri));
       return history.push(`/drinks/${keyID}`);
     }
     if (inMeals) {
       const recipMeal = store.recipeslist.meals.find(({ idMeal }) => idMeal === keyID);
-      dispatch(recipeInFoco(recipMeal));
+      await dispatch(recipeInFoco(recipMeal));
       return history.push(`/foods/${keyID}`);
     }
   };
@@ -52,7 +52,7 @@ export default function DisplayCards() {
         className="displayCard"
         role="button"
         tabIndex={ 0 }
-        onKeyDown={ () => true }
+        onKeyDown={ () => {} }
         onClick={ ({ target }) => pushTo(target.attributes['data-id'].value) }
       >
         {inMeals
@@ -71,7 +71,7 @@ export default function DisplayCards() {
         className="displayCard"
         role="button"
         tabIndex={ 0 }
-        onKeyDown={ () => true }
+        onKeyDown={ () => {} }
         onClick={ ({ target }) => pushTo(target.attributes['data-id'].value) }
       >
         {inDrinks
