@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation, useHistory } from 'react-router-dom';
 import { StoreContext, DispatchContext } from '../context/store';
-import { recipeInFoco, recipesListAPI } from '../context/action';
+import { recipeInFoco, recipesListAPI, recipesCategory } from '../context/action';
 
 import Card from './assets/Card';
 
@@ -19,16 +19,20 @@ export default function DisplayCards() {
   useEffect(() => {
     const getDrinks = async () => {
       if (inDrinks && store.recipeslist.meals) {
+        await getDataApi('drinks', 'categorias')
+          .then((res) => dispatch(recipesCategory(res)));
         await getDataApi('drinks', 'all').then((res) => {
           dispatch(recipesListAPI(res));
         });
-        return true;
+        // return true;
       }
       if (inMeals && store.recipeslist.drinks) {
+        await getDataApi('foods', 'categorias')
+          .then((res) => dispatch(recipesCategory(res)));
         await getDataApi('foods', 'all').then((res) => {
           dispatch(recipesListAPI(res));
         });
-        return true;
+        // return true;
       }
     };
     getDrinks();
