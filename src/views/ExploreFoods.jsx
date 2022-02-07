@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import HeaderProfile from '../components/HeaderNoSer';
+import HeaderNoSer from '../components/HeaderNoSer';
 import Footer from '../components/Footer';
 
 export default function ExploreFoods() {
   return (
     <div>
-      <HeaderProfile title="Explore Foods" />
+      <HeaderNoSer title="Explore Foods" />
       <Link to="/explore/foods/ingredients">
         <button
           data-testid="explore-by-ingredient"

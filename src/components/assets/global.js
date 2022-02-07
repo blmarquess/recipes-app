@@ -59,18 +59,13 @@ const GlobalStyle = createGlobalStyle`* {
     padding: 12px;
   }
 
-  .card {
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    height: 150px;
-    width: 150px;
-  }
-
   .card-img {
     background-size: cover;
-    height: 150px;
-    width: 150px;
+    border-radius: 0.4rem 0.4rem 0 0;
+    height: 140px;
+    margin-bottom: 2px;
+    margin-top: -1px;
+    width: 140px;
   }
 
 

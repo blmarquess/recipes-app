@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { userAction } from '../redux/actions';
 
 import Input from '../components/assets/Input';
 import ButtonSD from '../components/assets/ButtonSD';
+import { DispatchContext } from '../context/store';
+import { login } from '../context/action';
 
 const Login = () => {
+  const dispatch = useContext(DispatchContext);
   const [loginState, setInfLogin] = useState({ user: '', psw: '', redirect: false });
   const stateUpdate = (e) => setInfLogin({ ...loginState, [e.name]: e.value });
-  const dispatch = useDispatch();
 
   const PSW_MIN = 6;
   const dotCom = /^[a-z0-9._-]+@[a-z0-9]+\.com$/;
@@ -39,7 +39,7 @@ const Login = () => {
       <Link to="./foods">
         <ButtonSD
           data-testid="login-submit-btn"
-          onClick={ () => dispatch(userAction(loginState.user)) }
+          onClick={ () => dispatch(login(loginState.user)) }
           disabled={ !isValidForm() }
         >
           Entrar
