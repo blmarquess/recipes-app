@@ -8,7 +8,6 @@ export default function CategoryCard(props) {
     <section className="card">
       <button
         type="button"
-        key={ Math.random().toString(+'16') }
         onClick={ () => toCkick(srcName, rota) }
         data-testid={ `${srcName}-category-filter` }
       >
