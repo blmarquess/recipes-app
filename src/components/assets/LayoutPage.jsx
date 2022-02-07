@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-const LayoutPage = styled.section`display: flex;
+const LayoutPage = styled.section`background: rgba(255, 254, 254, 0.83);
+  display: flex;
 
   @media ( min-width : 200px ) and ( max-width : 1600px ) {
     display: flex;

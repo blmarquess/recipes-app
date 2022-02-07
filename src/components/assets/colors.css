@@ -1,5 +1,5 @@
 .test {
-  background: rgba(255, 254, 254, 0.938);
+  background: rgba(255, 255, 255, 0.959);
 }
 
 .border {
@@ -8,4 +8,8 @@
 
 .shadow {
   box-shadow: 0 7px 11px -10px rgba(26, 24, 24, 0.815);
+}
+
+.backGroung {
+  background: rgba(255, 254, 254, 0.973);
 }

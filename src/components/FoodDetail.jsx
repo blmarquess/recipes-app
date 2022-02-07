@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { refactoryYtUrl } from '../utils/tools';
 
 export default function FoodDetail(props) {
   const {
@@ -33,7 +34,7 @@ export default function FoodDetail(props) {
           height="240"
           id="ytplayer"
           type="text/html"
-          src={ strYoutube.replace('watch?v=', 'embed/') }
+          src={ refactoryYtUrl(strYoutube) }
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
           allowFullScreen
