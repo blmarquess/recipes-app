@@ -36,7 +36,7 @@ export default function FoodDetail(props) {
           type="text/html"
           src={ refactoryYtUrl(strYoutube) }
           frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+          allow="accelerometer; encrypted-media; gyroscope"
           allowFullScreen
           title="YouTube video player"
           data-testid="video"

@@ -63,7 +63,6 @@ export const getLocalCofocusID = (data, rota) => {
 };
 
 export const refactoryYtUrl = (url) => url
-  .replace('youtube', 'youtube-nocookie')
-  .replace('watch?v=', 'embed/');
+  .replace('youtube.com/watch?v=', 'youtube-nocookie.com/embed/');
 
 export const clearFocusItem = () => localStorage.removeItem('DetailItem');
