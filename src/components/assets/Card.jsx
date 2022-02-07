@@ -9,7 +9,7 @@ export default function Card(props) {
       <img
         data-id={ keyItem }
         data-testid={ `${index}-card-img` }
-        className="card-img"
+        className="rounded-xl h-34 w-34 shadow-sm-top"
         src={ imgSRC }
         alt={ `imagem do ${srcName}` }
       />
