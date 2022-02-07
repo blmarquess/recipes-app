@@ -4,11 +4,12 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import GlobalStyle from './components/assets/global';
 import * as serviceWorker from './serviceWorker';
+import './index.css';
 
 ReactDOM.render(
   <BrowserRouter>
     <GlobalStyle />
-    <App />
+    <App className="grid grid-cols-1" />
   </BrowserRouter>, document.getElementById('root'),
 );
 

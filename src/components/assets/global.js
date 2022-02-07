@@ -7,6 +7,11 @@ const GlobalStyle = createGlobalStyle`* {
     padding: 0;
   }
 
+  body {
+    height: 100%;
+    width: 100%;
+  }
+
   .loginView {
     display: grid;
     margin: 0 auto;
@@ -68,7 +73,14 @@ const GlobalStyle = createGlobalStyle`* {
     width: 140px;
   }
 
-
+  .loginPag {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+  }
 `;
 
 export default GlobalStyle;
