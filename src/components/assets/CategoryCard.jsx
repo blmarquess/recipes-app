@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function CategoryCard(props) {
-  console.log('props', props);
-  const { srcName } = props;
+  const { srcName, toCkick, rota } = props;
 
   return (
     <section className="card">
       <button
         type="button"
-        onClick={ ({ target }) => console.log(target) }
+        key={ Math.random().toString(+'16') }
+        onClick={ () => toCkick(srcName, rota) }
         data-testid={ `${srcName}-category-filter` }
       >
         { srcName }
