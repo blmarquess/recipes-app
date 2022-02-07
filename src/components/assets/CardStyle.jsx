@@ -9,7 +9,7 @@ const CardS = styled.section`align-items: center;
   flex-direction: column;
   height: 170px;
   justify-content: space-around;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding: 0 0 0.3rem;
   width: 140px;
 `;
