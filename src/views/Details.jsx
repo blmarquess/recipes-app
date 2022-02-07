@@ -28,13 +28,13 @@ export default function Details() {
       if (localData === null && recipeOnFoco.length === 0) {
         await getDataApi(rota, 'id', id).then((res) => {
           dispatch(recipeInFoco(res));
-        });
+        }).catch(() => []); // !
       }
       if (id !== localDataID) {
         clearFocusItem();
         await getDataApi(rota, 'id', id).then((res) => {
           dispatch(recipeInFoco(res));
-        });
+        }).catch(() => []); // !
       }
       if (localData && recipeOnFoco.length === 0) {
         dispatch(recipeInFoco(localData.recipefocus));
@@ -45,7 +45,6 @@ export default function Details() {
 
   return (
     <LayoutPage>
-
       {localData !== null && objSelector === 'meals'
         && recipeOnFoco.meals && recipeOnFoco.meals.length === 1
         && <FoodDetail { ...localData.recipefocus.meals[0] } />}
@@ -53,7 +52,6 @@ export default function Details() {
       {localData !== null && objSelector === 'drinks'
         && recipeOnFoco.drinks && recipeOnFoco.drinks.length === 1
         && <DrinkDetails { ...localData.recipefocus.drinks[0] } />}
-
     </LayoutPage>
   );
 }
