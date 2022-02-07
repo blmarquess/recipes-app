@@ -2,17 +2,17 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { recipeInFoco, recipesListAPI } from '../context/action';
 import { DispatchContext } from '../context/store';
-import { getDataApi, redirectToID } from '../utils/tools';
 
 import ButtonSD from './assets/ButtonSD';
 import Input from './assets/Input';
+
+import { getDataApi, redirectToID } from '../utils/tools';
 
 export default function SearchBar() {
   const history = useHistory();
   const dispatch = useContext(DispatchContext);
   const rota = history.location.pathname.replace('/', '').replace('/', '');
   const keyData = rota === 'foods' ? 'meals' : 'drinks';
-  // const keyID = rota === 'foods' ? 'idMeal' : 'idDrink';
 
   const [searchQuery, setSearch] = useState({ query: '', option: '', data: [] });
 
@@ -24,7 +24,6 @@ export default function SearchBar() {
       if (res[keyData] === null) {
         return global.alert('Sorry, we haven\'t found any recipes for these filters.');
       }
-      // dispatch(SearchDataAPI(res[keyData]));
       if (res[keyData].length === 1) {
         dispatch(recipeInFoco(res));
         const nreRota = redirectToID(res);
