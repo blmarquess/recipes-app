@@ -62,4 +62,8 @@ export const getLocalCofocusID = (data, rota) => {
   return numAleatoreo;
 };
 
+export const refactoryYtUrl = (url) => url
+  .replace('youtube', 'youtube-nocookie')
+  .replace('watch?v=', 'embed/');
+
 export const clearFocusItem = () => localStorage.removeItem('DetailItem');
