@@ -1,21 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
-import store from './redux/store';
 import GlobalStyle from './components/assets/global';
+import * as serviceWorker from './serviceWorker';
+import './index.css';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider store={ store }>
-      <GlobalStyle />
-      <App />
-    </Provider>
-  </BrowserRouter>,
-  document.getElementById('root'),
+    <GlobalStyle />
+    <App className="grid grid-cols-1" />
+  </BrowserRouter>, document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

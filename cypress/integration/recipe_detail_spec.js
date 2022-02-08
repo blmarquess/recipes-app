@@ -249,7 +249,7 @@ describe('39 - Implemente a solução de forma que caso a receita já tenha sido
       onBeforeLoad(win) {
         const doneRecipes = [{
           "id": "52771",
-          "type": "comida",
+          "type": "food",
           "nationality": "Italian",
           "category": "Vegetarian",
           "alcoholicOrNot": "",
@@ -271,7 +271,7 @@ describe('39 - Implemente a solução de forma que caso a receita já tenha sido
       onBeforeLoad(win) {
         const doneRecipes = [{
           "id": "178319",
-          "type": "bebida",
+          "type": "drink",
           "nationality": "",
           "category": "Cocktail",
           "alcoholicOrNot": "Alcoholic",
@@ -407,7 +407,7 @@ describe('44 - Implemente o ícone do coração (favorito) de maneira que, deve 
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "52771",
-          "type": "comida",
+          "type": "food",
           "nationality": "Italian",
           "category": "Vegetarian",
           "alcoholicOrNot": "",
@@ -441,7 +441,7 @@ describe('44 - Implemente o ícone do coração (favorito) de maneira que, deve 
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "178319",
-          "type": "bebida",
+          "type": "drink",
           "nationality": "",
           "category": "Cocktail",
           "alcoholicOrNot": "Alcoholic",
@@ -495,9 +495,10 @@ describe('45 - Implemente a lógica no botão de favoritar, caso seja clicado, o
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "52771",
-          "type": "comida",
+          "type": "food",
           "nationality": "Italian",
           "category": "Vegetarian",
+          "alcoholicOrNot": "",
           "name": "Spicy Arrabiata Penne",
           "image": "https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg",
         }];
@@ -540,7 +541,7 @@ describe('45 - Implemente a lógica no botão de favoritar, caso seja clicado, o
       onBeforeLoad(win) {
         const favoriteRecipes = [{
           "id": "178319",
-          "type": "bebida",
+          "type": "drink",
           "category": "Cocktail",
           "alcoholicOrNot": "Alcoholic",
           "name": "Aquamarine",

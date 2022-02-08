@@ -1,45 +1,73 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { refactoryYtUrl } from '../utils/tools';
+import recipeFactory from '../utils/recipeFactory';
+import { StoreContext } from '../context/store';
+import Recommendation from './Recommendation';
 
-export default function FoodDetail(props) {
+export default function FoodDetail() {
+  const recipefocus = Object.values(useContext(StoreContext).recipefocus)[0];
+  const [clicked, setClicked] = useState(false);
+
   const {
     strMealThumb,
     strMeal,
     strCategory,
-    strIngredient,
     strInstructions,
     strYoutube,
-  } = props;
+  } = recipefocus[0];
 
   return (
     <>
       <section>
-        <img src={ strMealThumb } alt={ strMeal } />
-        <h2>{ strMeal }</h2>
-        <h6>{ strCategory }</h6>
+        <img src={ strMealThumb } alt={ strMeal } data-testid="recipe-photo" />
+        <button type="button" data-testid="share-btn"> Share/ </button>
+        <button type="button" data-testid="favorite-btn"> /Fav </button>
+        <h2 data-testid="recipe-title">{ strMeal }</h2>
+        <h6 data-testid="recipe-category">{ strCategory }</h6>
       </section>
       <section>
         <section>
+          <hr />
           <h3>Ingredients</h3>
-          <p>{ strIngredient }</p>
+          <section>
+            { recipefocus && recipeFactory(recipefocus[0])
+              .map((ingr, index) => (
+                <li
+                  key={ Math.random() }
+                  data-testid={ `${index}-ingredient-name-and-measure` }
+                >
+                  { `- ${ingr.ingredient} : ${ingr.measure}` }
+                </li>
+              )) }
+            <hr />
+          </section>
         </section>
         <h3>Instructions</h3>
-        <p>{ strInstructions }</p>
+        <p data-testid="instructions">{ strInstructions }</p>
       </section>
       <section>
         <h3>Video</h3>
         <iframe
-          src={ strYoutube.replace('watch?v=', 'embed/') }
+          width="360"
+          height="240"
+          id="ytplayer"
+          type="text/html"
+          src={ refactoryYtUrl(strYoutube) }
           frameBorder="0"
+          allow="accelerometer; encrypted-media; gyroscope"
           allowFullScreen
-          title="video"
+          title="YouTube video player"
           data-testid="video"
         />
       </section>
+      <Recommendation />
       <button
+        onClick={ () => setClicked(!clicked) }
+        data-testid="start-recipe-btn"
         type="button"
       >
-        Start Recipe
+        { clicked ? 'Continue Recipe' : 'Start Recipe' }
       </button>
     </>
   );

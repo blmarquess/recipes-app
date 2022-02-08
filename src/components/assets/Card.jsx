@@ -1,18 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import CardS from './CardStyle';
 
 export default function Card(props) {
-  const { srcName, imgSRC, index } = props;
+  const { srcName, imgSRC, index, keyItem } = props;
   return (
-    <section data-testid={ `${index}-recipe-card` } className="card">
+    <CardS data-testid={ `${index}-recipe-card` } data-id={ keyItem }>
       <img
-        className="card-img"
+        data-id={ keyItem }
+        data-testid={ `${index}-card-img` }
+        className="rounded-xl h-34 w-34 shadow-sm-top"
         src={ imgSRC }
         alt={ `imagem do ${srcName}` }
-        data-testid={ `${index}-card-img` }
       />
-      <span data-testid={ `${index}-card-name` }>{ srcName }</span>
-    </section>
+      <span data-id={ keyItem } data-testid={ `${index}-card-name` }>{ srcName }</span>
+    </CardS>
   );
 }
 
