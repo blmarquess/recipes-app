@@ -41,14 +41,7 @@ export default function Details() {
       }
     };
     ferifInitDetails();
-  }, [
-    dispatch,
-    id,
-    localData,
-    localDataID,
-    objSelector,
-    recipeOnFoco,
-    rota]);
+  }, [dispatch, id, localData, localDataID, objSelector, recipeOnFoco, rota]);
 
   return (
     <LayoutPage>
@@ -58,7 +51,7 @@ export default function Details() {
 
       {localData !== null && objSelector === 'drinks'
         && recipeOnFoco.drinks && recipeOnFoco.drinks.length === 1
-        && <DrinkDetails { ...localData.recipefocus.drinks[0] } />}
+        && <DrinkDetails />}
     </LayoutPage>
   );
 }
