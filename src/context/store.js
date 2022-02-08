@@ -13,6 +13,7 @@ export const initStore = {
   favorites: [],
   inprogress: [],
   recipeslist: [],
+  recipesrecomend: [],
   recipescategory: [],
   hasfilter: '',
 };
