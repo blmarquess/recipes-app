@@ -6,7 +6,7 @@ import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import SearchBar from './SearchBar';
 
-const headerStyle = `min-w-full h-12 px-8 py-10 grid-col-1 flex-col m-b-8 bg-gray-200
+const headerStyle = `min-w-full h-8 px-8 py-10 flex-col mb-4 bg-gray-200
   border-b border-gray-300 shadow-md fixed top-0 left-0 z-20 items-center`;
 
 export default function Header({ title }) {
@@ -14,7 +14,7 @@ export default function Header({ title }) {
   const history = useHistory();
   return (
     <div className={ headerStyle }>
-      <section className="flex flex-row justify-between">
+      <section className="flex flex-row justify-between items-center align-middle">
         <div>
           <button
             type="button"
@@ -28,11 +28,11 @@ export default function Header({ title }) {
             />
           </button>
         </div>
-        <div className="align-center items-center">
+        <div className="align-center items-center flex justify-center">
           { title
           && (
             <h2
-              className="text-center text-red-600"
+              className="text-center text-red-500 font-extrabold text-4xl items-center"
               data-testid="page-title"
             >
               { title }
