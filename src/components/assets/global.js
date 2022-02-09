@@ -61,6 +61,12 @@ const GlobalStyle = createGlobalStyle`* {
     width: 140px;
   }
 
+  .card-recommended {
+    border: 1px solid '#000000';
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 export default GlobalStyle;

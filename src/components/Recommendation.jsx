@@ -37,31 +37,13 @@ function Recommendation() {
       {store.length === 0
         ? <p>Loading</p>
         : (
-          <section className="flex flex-row h-32 w-full overflow-x-scroll justify-start">
+          <section
+            className="flex flex-row h-32 w-full overflow-x-scroll justify-start mt-10"
+          >
             {inDrinks
             && store
             && recipesDrinks
             && recipesDrinks[0].slice(0, +'6').map((recipe, index) => (
-              // <div
-              //   data-testid={ `${index}-recomendation-card` }
-              //   key={ Math.random() }
-              // >
-              //   <h2
-              //     data-testid={ `${index}-recomendation-title` }
-              //   >
-              //     { recipe.strMeal }
-              //   </h2>
-              //   <img
-              //     src={ recipe.strMealThumb }
-              //     alt={ recipe.strMeal }
-              //     className={ StyleCarFooter }
-              //   />
-              //   <h6
-              //     data-testid={ `${index}-recomendation-category` }
-              //   >
-              //     { recipe.strCategory }
-              //   </h6>
-              // </div>
               <div key={ Math.random() }>
                 <CardCarossel
                   num={ index }
@@ -77,7 +59,9 @@ function Recommendation() {
       {store.length === 0
         ? <p>Loading</p>
         : (
-          <section>
+          <section
+            className="flex flex-row h-32 w-full overflow-x-scroll justify-start mb-14"
+          >
             {inMeals
             && store
             && recipesMeals
@@ -92,31 +76,6 @@ function Recommendation() {
                     strInstructions={ recipe.strInstructions }
                   />
                 </div>
-                // <div
-                //   data-testid={ `${index}-recomendation-card` }
-                //   key={ Math.random() }
-                // >
-                //   <img
-                //     src={ recipe.strDrinkThumb }
-                //     alt={ recipe.strDrink }
-                //     className={ StyleCarFooter }
-                //   />
-                //   <h2
-                //     data-testid={ `${index}-recomendation-title` }
-                //   >
-                //     { recipe.strDrink }
-                //   </h2>
-                //   <h6
-                //     data-testid={ `${index}-recomendation-category` }
-                //   >
-                //     { recipe.strCategory }
-                //   </h6>
-                //   <h6
-                //     data-testid={ `${index}-recomendation-category` }
-                //   >
-                //     { recipe.strAlcoholic }
-                //   </h6>
-                // </div>
               ))}
           </section>
         )}
