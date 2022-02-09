@@ -61,14 +61,6 @@ const GlobalStyle = createGlobalStyle`* {
     width: 140px;
   }
 
-  /* .loginPag {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: center;
-    width: 100%;
-  } */
 `;
 
 export default GlobalStyle;
