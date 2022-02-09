@@ -17,6 +17,7 @@ const LayoutPage = styled.section`align-items: center;
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
+    max-width: 360;
   }
 `;
 
