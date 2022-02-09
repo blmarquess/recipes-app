@@ -8,6 +8,9 @@ import Input from './assets/Input';
 
 import { getDataApi, redirectToID } from '../utils/tools';
 
+const searcBarStyle = `min-w-full px-4 py-8 grid-col-1 flex-col mb-8 bg-gray-200
+  border-b border-l border-r border-gray-300 shadow-md z-20 transition-opacity`;
+
 export default function SearchBar() {
   const history = useHistory();
   const dispatch = useContext(DispatchContext);
@@ -46,7 +49,7 @@ export default function SearchBar() {
   };
 
   return (
-    <section>
+    <section className={ searcBarStyle }>
       <Input
         type="text"
         wsize="100%"

@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
+import { footer } from './assets/Tailwind';
 
 export default function Footer() {
   return (
 
     <footer
-      className="footer"
+      className={ footer }
       data-testid="footer"
     >
       <Link to="/drinks">

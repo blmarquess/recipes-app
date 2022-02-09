@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const LayoutPage = styled.section`align-items: center;
   align-self: center;
-  background: rgba(255, 254, 254, 0.83);
+  background: rgb(243, 244, 246);
   display: flex;
   flex-direction: column;
   height: 100%;

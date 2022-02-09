@@ -10,7 +10,7 @@ const CardS = styled.section`align-items: space-between;
   flex-direction: column;
   height: 180px;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding: 0 0 0.3rem;
   width: 140px;
 
