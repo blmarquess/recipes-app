@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
 import { refactoryYtUrl } from '../utils/tools';
 import recipeFactory from '../utils/recipeFactory';
@@ -7,15 +6,10 @@ import Recommendation from './Recommendation';
 
 export default function FoodDetail() {
   const recipefocus = Object.values(useContext(StoreContext).recipefocus)[0];
-  const [clicked, setClicked] = useState(false);
+  const { strMealThumb, strMeal, strCategory, strInstructions,
+    strYoutube } = recipefocus[0];
 
-  const {
-    strMealThumb,
-    strMeal,
-    strCategory,
-    strInstructions,
-    strYoutube,
-  } = recipefocus[0];
+  const [clicked, setClicked] = useState(false);
 
   return (
     <>
@@ -26,26 +20,27 @@ export default function FoodDetail() {
         <h2 data-testid="recipe-title">{ strMeal }</h2>
         <h6 data-testid="recipe-category">{ strCategory }</h6>
       </section>
+
       <section>
-        <section>
-          <hr />
-          <h3>Ingredients</h3>
-          <section>
-            { recipefocus && recipeFactory(recipefocus[0])
-              .map((ingr, index) => (
-                <li
-                  key={ Math.random() }
-                  data-testid={ `${index}-ingredient-name-and-measure` }
-                >
-                  { `- ${ingr.ingredient} : ${ingr.measure}` }
-                </li>
-              )) }
-            <hr />
-          </section>
-        </section>
+        <hr />
+        <h3>Ingredients</h3>
+        { recipefocus && recipeFactory(recipefocus[0])
+          .map((ingr, index) => (
+            <li
+              key={ Math.random() }
+              data-testid={ `${index}-ingredient-name-and-measure` }
+            >
+              { `- ${ingr.ingredient} : ${ingr.measure}` }
+            </li>
+          )) }
+        <hr />
+      </section>
+
+      <section>
         <h3>Instructions</h3>
         <p data-testid="instructions">{ strInstructions }</p>
       </section>
+
       <section>
         <h3>Video</h3>
         <iframe
@@ -61,7 +56,9 @@ export default function FoodDetail() {
           data-testid="video"
         />
       </section>
+
       <Recommendation />
+
       <button
         onClick={ () => setClicked(!clicked) }
         data-testid="start-recipe-btn"
@@ -69,15 +66,7 @@ export default function FoodDetail() {
       >
         { clicked ? 'Continue Recipe' : 'Start Recipe' }
       </button>
+
     </>
   );
 }
-
-FoodDetail.propTypes = {
-  strCategory: PropTypes.string,
-  strIngredient: PropTypes.string,
-  strInstructions: PropTypes.string,
-  strMeal: PropTypes.string,
-  strMealThumb: PropTypes.string,
-  strYoutube: PropTypes.string,
-}.isRequired;
