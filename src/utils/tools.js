@@ -7,8 +7,6 @@ export const dataCleaner = () => localStorage.clear();
 export const URL = [
   { id: 'foods',
     foods: {
-
-      
       ingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
       nome: 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
       random: 'https://www.themealdb.com/api/json/v1/1/random.php',
