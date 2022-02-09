@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { StoreContext } from '../context/store';
 import Recommendation from './Recommendation';
 import recipeFactory from '../utils/recipeFactory';
+import ButtonSD from './assets/ButtonSD';
 
 import { barShareButton } from './assets/Tailwind';
 
@@ -51,13 +52,15 @@ export default function DrinkDetails() {
 
       <Recommendation />
 
-      <button
+      <ButtonSD
         onClick={ () => setClicked(!clicked) }
         data-testid="start-recipe-btn"
         type="button"
+        position="fixed"
+        bottom="0px"
       >
         { clicked ? 'Continue Recipe' : 'Start Recipe' }
-      </button>
+      </ButtonSD>
     </>
   );
 }

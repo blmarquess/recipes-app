@@ -3,6 +3,7 @@ import { refactoryYtUrl } from '../utils/tools';
 import recipeFactory from '../utils/recipeFactory';
 import { StoreContext } from '../context/store';
 import Recommendation from './Recommendation';
+import ButtonSD from './assets/ButtonSD';
 
 export default function FoodDetail() {
   const recipefocus = Object.values(useContext(StoreContext).recipefocus)[0];
@@ -59,13 +60,16 @@ export default function FoodDetail() {
 
       <Recommendation />
 
-      <button
+      <ButtonSD
         onClick={ () => setClicked(!clicked) }
         data-testid="start-recipe-btn"
         type="button"
+        position="fixed"
+        bottom="0px"
+        msize="20px 0 0 0"
       >
         { clicked ? 'Continue Recipe' : 'Start Recipe' }
-      </button>
+      </ButtonSD>
 
     </>
   );
