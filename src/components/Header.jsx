@@ -32,8 +32,8 @@ export default function Header({ title }) {
           { title
           && (
             <h2
-              data-testid=" "
-              className="text-center text-red-600 text-2xl font-extrabold"
+              className="text-center text-red-600"
+              data-testid="page-title"
             >
               { title }
             </h2>

@@ -18,6 +18,8 @@ export default function reducer(state, action) {
     return { ...state, recipescategory: action.payload };
   case 'SW_FILTER':
     return { ...state, hasfilter: action.payload };
+  case 'RECOMMENDATIONS':
+    return { ...state, recipesrecomend: action.payload };
   default: return state;
   }
 }

@@ -5,6 +5,7 @@ export const RECIPES_LIST = 'RECIPES_LIST';
 export const CATEGORY_LIST = 'CATEGORY_LIST';
 export const LOGIN = 'LOGIN';
 export const SW_FILTER = 'SW_FILTER';
+export const RECOMMENDATIONS = 'RECOMMENDATIONS';
 
 export const switchFilter = (payload) => ({ type: SW_FILTER, payload });
 
@@ -18,3 +19,5 @@ export const recipeInFoco = (payload) => {
   clearFocusItem();
   return ({ type: IN_FOCO, payload });
 };
+
+export const feathRecommentations = (payload) => ({ type: RECOMMENDATIONS, payload });

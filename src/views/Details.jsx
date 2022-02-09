@@ -28,7 +28,7 @@ export default function Details() {
       if (localData === null && recipeOnFoco.length === 0) {
         await getDataApi(rota, 'id', id).then((res) => {
           dispatch(recipeInFoco(res));
-        }).catch(() => []); // !
+        }).catch(() => []);
       }
       if (id !== localDataID) {
         clearFocusItem();
@@ -41,17 +41,17 @@ export default function Details() {
       }
     };
     ferifInitDetails();
-  }, [dispatch, id, localData, localDataID, recipeOnFoco, rota]);
+  }, [dispatch, id, localData, localDataID, objSelector, recipeOnFoco, rota]);
 
   return (
     <LayoutPage>
       {localData !== null && objSelector === 'meals'
         && recipeOnFoco.meals && recipeOnFoco.meals.length === 1
-        && <FoodDetail { ...localData.recipefocus.meals[0] } />}
+        && <FoodDetail />}
 
       {localData !== null && objSelector === 'drinks'
         && recipeOnFoco.drinks && recipeOnFoco.drinks.length === 1
-        && <DrinkDetails { ...localData.recipefocus.drinks[0] } />}
+        && <DrinkDetails />}
     </LayoutPage>
   );
 }
