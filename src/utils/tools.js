@@ -1,9 +1,3 @@
-export const readLocalData = (data) => JSON.parse(localStorage.getItem(data));
-export const saveLocalData = (keyDB, object) => localStorage
-  .setItem(keyDB, JSON.stringify(object));
-export const clearFocusItem = () => localStorage.removeItem('DetailItem');
-export const dataCleaner = () => localStorage.clear();
-
 export const URL = [
   { id: 'foods',
     foods: {
@@ -64,6 +58,11 @@ export const getLocalCofocusID = (data, rota) => {
   }
   return numAleatoreo;
 };
+export const readLocalData = (data) => JSON.parse(localStorage.getItem(data));
+export const saveLocalData = (keyDB, object) => localStorage
+  .setItem(keyDB, JSON.stringify(object));
+export const clearFocusItem = () => localStorage.removeItem('DetailItem');
+export const dataCleaner = () => localStorage.clear();
 
 export const refactoryYtUrl = (url) => url
   .replace('youtube.com/watch?v=', 'youtube-nocookie.com/embed/');

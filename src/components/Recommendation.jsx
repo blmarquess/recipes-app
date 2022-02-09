@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { DispatchContext, StoreContext } from '../context/store';
 import { feathRecommentations } from '../context/action';
 import { getDataApi } from '../utils/tools';
+import { SizePage } from './assets/Tailwind';
+import CardCarossel from './assets/CardCarrosel';
 
 function Recommendation() {
   const rota = useLocation().pathname.replace('/', '').split('/')[0];
@@ -31,34 +33,47 @@ function Recommendation() {
   }, [dispatch, inDrinks, inMeals]);
 
   return (
-    <div>
+    <SizePage>
       {store.length === 0
         ? <p>Loading</p>
         : (
-          <section>
+          <section className="flex flex-row h-32 w-full overflow-x-scroll justify-start">
             {inDrinks
             && store
             && recipesDrinks
             && recipesDrinks[0].slice(0, +'6').map((recipe, index) => (
-              <div
-                data-testid={ `${index}-recomendation-card` }
-                key={ Math.random() }
-              >
-                <img src={ recipe.strMealThumb } alt={ recipe.strMeal } />
-                <h2
-                  data-testid={ `${index}-recomendation-title` }
-                >
-                  { recipe.strMeal }
-                </h2>
-                <h6
-                  data-testid={ `${index}-recomendation-category` }
-                >
-                  { recipe.strCategory }
-                </h6>
+              // <div
+              //   data-testid={ `${index}-recomendation-card` }
+              //   key={ Math.random() }
+              // >
+              //   <h2
+              //     data-testid={ `${index}-recomendation-title` }
+              //   >
+              //     { recipe.strMeal }
+              //   </h2>
+              //   <img
+              //     src={ recipe.strMealThumb }
+              //     alt={ recipe.strMeal }
+              //     className={ StyleCarFooter }
+              //   />
+              //   <h6
+              //     data-testid={ `${index}-recomendation-category` }
+              //   >
+              //     { recipe.strCategory }
+              //   </h6>
+              // </div>
+              <div key={ Math.random() }>
+                <CardCarossel
+                  num={ index }
+                  imgSrc={ recipe.strMealThumb }
+                  title={ recipe.strMeal }
+                  category={ recipe.strCategory }
+                  strInstructions={ recipe.strInstructions }
+                />
               </div>
             ))}
           </section>
-        )}
+        ) }
       {store.length === 0
         ? <p>Loading</p>
         : (
@@ -68,31 +83,45 @@ function Recommendation() {
             && recipesMeals
             && recipesMeals[0]
               .slice(0, +'6').map((recipe, index) => (
-                <div
-                  data-testid={ `${index}-recomendation-card` }
-                  key={ Math.random() }
-                >
-                  <img src={ recipe.strDrinkThumb } alt={ recipe.strDrink } />
-                  <h2
-                    data-testid={ `${index}-recomendation-title` }
-                  >
-                    { recipe.strDrink }
-                  </h2>
-                  <h6
-                    data-testid={ `${index}-recomendation-category` }
-                  >
-                    { recipe.strCategory }
-                  </h6>
-                  <h6
-                    data-testid={ `${index}-recomendation-category` }
-                  >
-                    { recipe.strAlcoholic }
-                  </h6>
+                <div key={ Math.random() }>
+                  <CardCarossel
+                    num={ index }
+                    imgSrc={ recipe.strDrinkThumb }
+                    title={ recipe.strDrink }
+                    category={ recipe.strCategory }
+                    strInstructions={ recipe.strInstructions }
+                  />
                 </div>
+                // <div
+                //   data-testid={ `${index}-recomendation-card` }
+                //   key={ Math.random() }
+                // >
+                //   <img
+                //     src={ recipe.strDrinkThumb }
+                //     alt={ recipe.strDrink }
+                //     className={ StyleCarFooter }
+                //   />
+                //   <h2
+                //     data-testid={ `${index}-recomendation-title` }
+                //   >
+                //     { recipe.strDrink }
+                //   </h2>
+                //   <h6
+                //     data-testid={ `${index}-recomendation-category` }
+                //   >
+                //     { recipe.strCategory }
+                //   </h6>
+                //   <h6
+                //     data-testid={ `${index}-recomendation-category` }
+                //   >
+                //     { recipe.strAlcoholic }
+                //   </h6>
+                // </div>
               ))}
           </section>
         )}
-    </div>
+
+    </SizePage>
   );
 }
 
