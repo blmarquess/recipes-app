@@ -9,7 +9,7 @@ import './index.css';
 ReactDOM.render(
   <BrowserRouter>
     <GlobalStyle />
-    <App className="grid grid-cols-1" />
+    <App className="grid grid-cols-1 min-h-full max-w-md" />
   </BrowserRouter>, document.getElementById('root'),
 );
 

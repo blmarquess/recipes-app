@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { DispatchContext, StoreContext } from '../context/store';
 import { recipesCategory, recipesListAPI, switchFilter } from '../context/action';
+import { Scategory } from './assets/Tailwind';
 
 import CategoryCard from './assets/CategoryCard';
 
@@ -43,7 +44,7 @@ export default function DisplayCategory() {
   };
 
   return (
-    <section className="displayCard" key={ Math.random().toString(+'16') }>
+    <section className={ Scategory } key={ Math.random().toString(+'16') }>
       <button
         type="button"
         data-testid="All-category-filter"

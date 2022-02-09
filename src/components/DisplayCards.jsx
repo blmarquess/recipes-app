@@ -7,6 +7,7 @@ import { recipeInFoco, recipesListAPI } from '../context/action';
 import Card from './assets/Card';
 
 import { getDataApi } from '../utils/tools';
+import { SDisplayCrd } from './assets/Tailwind';
 
 export default function DisplayCards() {
   const rota = useLocation();
@@ -32,16 +33,22 @@ export default function DisplayCards() {
     getDrinks();
   }, [inDrinks, inMeals, dispatch, store.recipeslist.meals, store.recipeslist.drinks]);
 
-  const pushTo = async (keyID) => {
-    if (inDrinks) {
-      const recipDri = store.recipeslist.drinks.find(({ idDrink }) => idDrink === keyID);
-      await dispatch(recipeInFoco(recipDri));
-      return history.push(`/drinks/${keyID}`);
-    }
-    if (inMeals) {
-      const recipMeal = store.recipeslist.meals.find(({ idMeal }) => idMeal === keyID);
-      await dispatch(recipeInFoco(recipMeal));
-      return history.push(`/foods/${keyID}`);
+  const pushTo = async (target) => {
+    const keyID = target.attributes['data-id']
+      ? target.attributes['data-id'].value : null;
+
+    if (keyID !== null) {
+      if (inDrinks) {
+        const recipDri = store.recipeslist.drinks
+          .find(({ idDrink }) => idDrink === keyID);
+        await dispatch(recipeInFoco(recipDri));
+        return history.push(`/drinks/${keyID}`);
+      }
+      if (inMeals) {
+        const recipMeal = store.recipeslist.meals.find(({ idMeal }) => idMeal === keyID);
+        await dispatch(recipeInFoco(recipMeal));
+        return history.push(`/foods/${keyID}`);
+      }
     }
   };
 
@@ -49,11 +56,11 @@ export default function DisplayCards() {
     <>
       {/* utilisação de evento de click em elementos não button https://dev.to/receter/easy-accessible-click-handlers-4jkb */}
       <section
-        className="displayCard"
+        className={ SDisplayCrd }
         role="button"
         tabIndex={ 0 }
         onKeyDown={ () => {} }
-        onClick={ ({ target }) => pushTo(target.attributes['data-id'].value) }
+        onClick={ ({ target }) => pushTo(target) }
       >
         {inMeals
           && store.recipeslist.meals
@@ -72,7 +79,7 @@ export default function DisplayCards() {
         role="button"
         tabIndex={ 0 }
         onKeyDown={ () => {} }
-        onClick={ ({ target }) => pushTo(target.attributes['data-id'].value) }
+        onClick={ ({ target }) => pushTo(target) }
       >
         {inDrinks
           && store.recipeslist.drinks
@@ -85,6 +92,7 @@ export default function DisplayCards() {
               imgSRC={ item.strDrinkThumb }
             />))}
       </section>
+      <hr />
     </>
   );
 }
