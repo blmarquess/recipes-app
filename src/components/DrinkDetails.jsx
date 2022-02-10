@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { StoreContext } from '../context/store';
 import Recommendation from './Recommendation';
 import recipeFactory from '../utils/recipeFactory';
@@ -7,11 +8,13 @@ import ButtonSD from './assets/ButtonSD';
 import { barShareButton } from './assets/Tailwind';
 
 export default function DrinkDetails() {
+  const history = useHistory();
   const recipefocus = Object.values(useContext(StoreContext).recipefocus)[0];
   const { strDrinkThumb, strDrink, strCategory, strInstructions,
-    strAlcoholic } = recipefocus[0];
+    strAlcoholic, idDrink } = recipefocus[0];
 
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
+  const startRecipe = () => history.push(`/drnks/${idDrink}/in-progress`);
 
   return (
     <>
@@ -53,13 +56,14 @@ export default function DrinkDetails() {
       <Recommendation />
 
       <ButtonSD
-        onClick={ () => setClicked(!clicked) }
+        onClick={ () => startRecipe() }
         data-testid="start-recipe-btn"
         type="button"
         position="fixed"
         bottom="0px"
       >
-        { clicked ? 'Continue Recipe' : 'Start Recipe' }
+        {/* { clicked ? 'Continue Recipe' : 'Start Recipe' } */}
+        Start Recipe
       </ButtonSD>
     </>
   );
