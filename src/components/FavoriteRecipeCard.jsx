@@ -8,7 +8,6 @@ import AlertLC from './assets/AlertLC';
 const copy = require('clipboard-copy');
 
 export default function FavoriteRecipeCard(props) {
-  // const { index, strMealThumb, strCategory, strMeal, strDrinkThumb, strTags } = props;
   const {
     index,
     id,
@@ -21,20 +20,6 @@ export default function FavoriteRecipeCard(props) {
     teste } = props;
   const ONE_SECOND = 1000;
   const [alertLC, setAlertLC] = useState(false);
-  // const history = useHistory();
-
-  // function splitStrTags() {
-  //   if (strTags !== null) {
-  //     const arrayStrTags = strTags.split(',');
-  //     return (
-  //       arrayStrTags
-  //         .map((tag) => (
-  //           <span key={ tag } data-testid={ `${index}-${tag}-horizontal-tag` }>
-  //             { tag }
-  //           </span>))
-  //     );
-  //   }
-  // }
 
   function unFavorite(favoriteId) {
     const oldFavoriteList = JSON.parse(localStorage.getItem('favoriteRecipes'));
@@ -42,7 +27,6 @@ export default function FavoriteRecipeCard(props) {
       .filter((favorite) => favorite.id !== favoriteId);
     localStorage.setItem('favoriteRecipes', JSON.stringify([...newFavoriteList]));
     teste(newFavoriteList);
-    // history.push('/favorite-recipes');
   }
 
   function copyToClipboard() {

@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
-// import blackHeartIcon from '../images/blackHeartIcon.svg';
 import AlertLC from './assets/AlertLC';
 
 const copy = require('clipboard-copy');
 
 export default function DoneRecipeCard(props) {
-  // const { index, strMealThumb, strCategory, strMeal, strDrinkThumb, strTags } = props;
   const {
     index,
     id,
@@ -22,19 +20,6 @@ export default function DoneRecipeCard(props) {
     tags } = props;
   const ONE_SECOND = 1000;
   const [alertLC, setAlertLC] = useState(false);
-
-  // function splitStrTags() {
-  //   if (strTags !== null) {
-  //     const arrayStrTags = strTags.split(',');
-  //     return (
-  //       arrayStrTags
-  //         .map((tag) => (
-  //           <span key={ tag } data-testid={ `${index}-${tag}-horizontal-tag` }>
-  //             { tag }
-  //           </span>))
-  //     );
-  //   }
-  // }
 
   function copyToClipboard() {
     copy(`http://localhost:3000/${type}s/${id}`);
