@@ -4,8 +4,15 @@ import PropTypes from 'prop-types';
 export default function RecipesProgress({ id, rota }) {
   console.log('recipiesPROG', id, rota);
   return (
-    <div>
-      <h2>RecipesProgress</h2>
+    <div className="mt-36">
+      <h2>
+        Estamos na rota:
+        {' '}
+        {rota}
+        {' '}
+        com o id:
+        {id}
+      </h2>
     </div>
   );
 }

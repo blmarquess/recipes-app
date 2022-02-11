@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { refactoryYtUrl } from '../utils/tools';
 import recipeFactory from '../utils/recipeFactory';
 import { StoreContext } from '../context/store';
@@ -6,11 +7,12 @@ import Recommendation from './Recommendation';
 import ButtonSD from './assets/ButtonSD';
 
 export default function FoodDetail() {
+  const history = useHistory();
   const recipefocus = Object.values(useContext(StoreContext).recipefocus)[0];
   const { strMealThumb, strMeal, strCategory, strInstructions,
-    strYoutube } = recipefocus[0];
+    strYoutube, idMeal } = recipefocus[0];
 
-  const [clicked, setClicked] = useState(false);
+  const startRecipe = () => history.push(`/foods/${idMeal}/in-progress`);
 
   return (
     <>
@@ -61,14 +63,13 @@ export default function FoodDetail() {
       <Recommendation />
 
       <ButtonSD
-        onClick={ () => setClicked(!clicked) }
+        onClick={ () => startRecipe() }
         data-testid="start-recipe-btn"
         type="button"
         position="fixed"
         bottom="0px"
-        msize="20px 0 0 0"
       >
-        { clicked ? 'Continue Recipe' : 'Start Recipe' }
+        Start Recipe
       </ButtonSD>
 
     </>

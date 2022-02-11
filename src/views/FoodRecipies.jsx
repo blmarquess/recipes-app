@@ -12,7 +12,6 @@ export default function FoodRecipies() {
     <div>
       <Header title="DrinksRecipies" />
       <RecipesProgress id={ recipeId } rota={ rota } />
-      <h2>teste</h2>
       <Footer />
     </div>
   );

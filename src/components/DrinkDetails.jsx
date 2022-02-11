@@ -4,6 +4,8 @@ import { StoreContext } from '../context/store';
 import Recommendation from './Recommendation';
 import recipeFactory from '../utils/recipeFactory';
 import ButtonSD from './assets/ButtonSD';
+import ShareButton from './ShareButton';
+imp
 
 import { barShareButton } from './assets/Tailwind';
 
@@ -13,7 +15,6 @@ export default function DrinkDetails() {
   const { strDrinkThumb, strDrink, strCategory, strInstructions,
     strAlcoholic, idDrink } = recipefocus[0];
 
-  // const [clicked, setClicked] = useState(false);
   const startRecipe = () => history.push(`/drnks/${idDrink}/in-progress`);
 
   return (
@@ -22,10 +23,8 @@ export default function DrinkDetails() {
         <img src={ strDrinkThumb } alt={ strDrink } data-testid="recipe-photo" />
       </section>
 
-      <section className={ barShareButton }>
-        <button type="button" data-testid="share-btn"> Share/ </button>
-        <button type="button" data-testid="favorite-btn"> /Fav </button>
-      </section>
+      <ShareButton />
+      <FavoriteButton />
 
       <section>
         <h2 data-testid="recipe-title">{ strDrink }</h2>
@@ -62,7 +61,6 @@ export default function DrinkDetails() {
         position="fixed"
         bottom="0px"
       >
-        {/* { clicked ? 'Continue Recipe' : 'Start Recipe' } */}
         Start Recipe
       </ButtonSD>
     </>
