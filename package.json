@@ -31,6 +31,7 @@
   "scripts": {
     "cy": "cypress run",
     "cy:open": "cypress open",
+    "commit": "cz",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
