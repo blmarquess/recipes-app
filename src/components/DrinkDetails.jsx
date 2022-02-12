@@ -5,9 +5,9 @@ import Recommendation from './Recommendation';
 import recipeFactory from '../utils/recipeFactory';
 import ButtonSD from './assets/ButtonSD';
 import ShareButton from './ShareButton';
-imp
+import FavoriteButton from './FavoriteButton';
 
-import { barShareButton } from './assets/Tailwind';
+// import { barShareButton } from './assets/Tailwind';
 
 export default function DrinkDetails() {
   const history = useHistory();
@@ -15,7 +15,7 @@ export default function DrinkDetails() {
   const { strDrinkThumb, strDrink, strCategory, strInstructions,
     strAlcoholic, idDrink } = recipefocus[0];
 
-  const startRecipe = () => history.push(`/drnks/${idDrink}/in-progress`);
+  const startRecipe = () => history.push(`/drinks/${idDrink}/in-progress`);
 
   return (
     <>

@@ -5,6 +5,8 @@ import recipeFactory from '../utils/recipeFactory';
 import { StoreContext } from '../context/store';
 import Recommendation from './Recommendation';
 import ButtonSD from './assets/ButtonSD';
+import ShareButton from './ShareButton';
+import FavoriteButton from './FavoriteButton';
 
 export default function FoodDetail() {
   const history = useHistory();
@@ -18,8 +20,10 @@ export default function FoodDetail() {
     <>
       <section>
         <img src={ strMealThumb } alt={ strMeal } data-testid="recipe-photo" />
-        <button type="button" data-testid="share-btn"> Share/ </button>
-        <button type="button" data-testid="favorite-btn"> /Fav </button>
+
+        <ShareButton />
+        <FavoriteButton />
+
         <h2 data-testid="recipe-title">{ strMeal }</h2>
         <h6 data-testid="recipe-category">{ strCategory }</h6>
       </section>

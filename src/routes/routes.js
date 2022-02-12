@@ -22,10 +22,10 @@ export default function Routes() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/foods" component={ Home } />
       <Route exact path="/drinks" component={ Home } />
-      <Route path="/foods/:id" render={ (props) => <Details { ...props } /> } />
-      <Route path="/drinks/:id" render={ (props) => <Details { ...props } /> } />
-      <Route path="/foods/:id/in-progress" component={ FoodRecipies } />
-      <Route path="/drnks/:id/in-progress" component={ DrinksRecipies } />
+      <Route path="/foods/:id" render={ (props) => <Details { ...props } /> } exact />
+      <Route path="/drinks/:id" render={ (props) => <Details { ...props } /> } exact />
+      <Route path="/foods/:id/in-progress" component={ FoodRecipies } exact />
+      <Route path="/drinks/:id/in-progress" component={ DrinksRecipies } exact />
       <Route exact path="/explore" component={ Explore } />
       <Route exact path="/surprise/:id" component={ Surprise } />
       <Route exact path="/explore/foods" component={ ExploreFoods } />
