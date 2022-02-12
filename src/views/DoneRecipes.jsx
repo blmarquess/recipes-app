@@ -68,7 +68,7 @@ export default function DoneRecipes() {
           Drinks
         </button>
       </section>
-      { showAllRecipes() }
+      { doneRecipesKeys !== null && showAllRecipes() }
       { showFilterRecipes() }
     </div>
   );
