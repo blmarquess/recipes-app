@@ -5,12 +5,8 @@ import FoodDetail from '../components/FoodDetail';
 import DrinkDetails from '../components/DrinkDetails';
 import { DispatchContext, StoreContext } from '../context/store';
 import { recipeInFoco } from '../context/action';
-import {
-  readLocalData,
-  getDataApi,
-  getLocalCofocusID,
-  clearFocusItem,
-} from '../utils/tools';
+import { readLocalData, clearFocusItem } from '../utils/storageTools';
+import { getDataApi, getLocalCofocusID } from '../utils/tools';
 
 export default function Details() {
   const { id } = useParams();

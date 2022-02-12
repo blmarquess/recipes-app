@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import HeaderNoSer from '../components/HeaderNoSer';
 import Footer from '../components/Footer';
-import { readLocalData, dataCleaner } from '../utils/tools';
+import { readLocalData, dataCleaner } from '../utils/storageTools';
 
 export default function Profile() {
   const mail = readLocalData('user');

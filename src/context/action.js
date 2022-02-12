@@ -1,4 +1,4 @@
-import { clearFocusItem } from '../utils/tools';
+import { clearFocusItem } from '../utils/storageTools';
 
 export const IN_FOCO = 'IN_FOCO';
 export const RECIPES_LIST = 'RECIPES_LIST';

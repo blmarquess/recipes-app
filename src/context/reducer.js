@@ -1,4 +1,4 @@
-import { saveLocalData } from '../utils/tools';
+import { saveLocalData } from '../utils/storageTools';
 
 export default function reducer(state, action) {
   switch (action.type) {

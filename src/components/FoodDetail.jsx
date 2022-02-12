@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { refactoryYtUrl } from '../utils/tools';
-import recipeFactory from '../utils/recipeFactory';
+import { recipeIngredientsFactory } from '../utils/Factory';
 import { StoreContext } from '../context/store';
 import Recommendation from './Recommendation';
 import ButtonSD from './assets/ButtonSD';
@@ -31,7 +31,7 @@ export default function FoodDetail() {
       <section>
         <hr />
         <h3>Ingredients</h3>
-        { recipefocus && recipeFactory(recipefocus[0])
+        { recipefocus && recipeIngredientsFactory(recipefocus[0])
           .map((ingr, index) => (
             <li
               key={ Math.random() }
