@@ -1,5 +1,5 @@
 import React, { useContext, useLayoutEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { DispatchContext, StoreContext } from '../context/store';
 import { feathRecommentations } from '../context/action';
 import { getDataApi } from '../utils/tools';
@@ -7,6 +7,7 @@ import { SizePage } from './assets/Tailwind';
 import CardCarossel from './assets/CardCarrosel';
 
 function Recommendation() {
+  const history = useHistory();
   const rota = useLocation().pathname.replace('/', '').split('/')[0];
   const inMeals = rota.includes('foods');
   const inDrinks = rota.includes('drinks');
@@ -32,6 +33,8 @@ function Recommendation() {
     recomends();
   }, [dispatch, inDrinks, inMeals]);
 
+  const redirectToRecipe = (idrota, id) => history.push(`/${idrota}/${id}`);
+
   return (
     <SizePage>
       {store.length === 0
@@ -46,6 +49,9 @@ function Recommendation() {
             && recipesDrinks[0].slice(0, +'6').map((recipe, index) => (
               <div key={ Math.random() }>
                 <CardCarossel
+                  rota="foods"
+                  id={ recipe.idMeal }
+                  redirect={ redirectToRecipe }
                   num={ index }
                   imgSrc={ recipe.strMealThumb }
                   title={ recipe.strMeal }
@@ -69,6 +75,9 @@ function Recommendation() {
               .slice(0, +'6').map((recipe, index) => (
                 <div key={ Math.random() }>
                   <CardCarossel
+                    rota="drinks"
+                    id={ recipe.idDrink }
+                    redirect={ redirectToRecipe }
                     num={ index }
                     imgSrc={ recipe.strDrinkThumb }
                     title={ recipe.strDrink }
