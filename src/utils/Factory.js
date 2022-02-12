@@ -31,6 +31,4 @@ export const recipeFavoriteFactory = (obj, rota) => ({
   alcoholicOrNot: obj.strAlcoholic || '',
   name: obj.strCategory,
   image: obj.strMealThumb || obj.strDrinkThumb,
-  doneDate: obj.dateModifield || '',
-  tags: obj.strTags || '',
 });

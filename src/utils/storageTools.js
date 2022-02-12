@@ -8,11 +8,11 @@ export const clearFocusItem = () => localStorage.removeItem('DetailItem');
 export const dataCleaner = () => localStorage.clear();
 
 export const isFavorite = (idItem) => {
-  const favoriteDB = readLocalData('favoriteRecipe');
+  const favoriteDB = readLocalData('favoriteRecipes');
   if (favoriteDB === null) {
     return false;
   }
-  return favoriteDB.some(({ id }) => id === idItem);
+  return favoriteDB.some((item) => item.id === idItem);
 };
 
 export const addFavorite = (newFavorite) => {
@@ -22,17 +22,15 @@ export const addFavorite = (newFavorite) => {
     return saveLocalData('favoriteRecipes', [newFavorite]);
   }
   if (atualFavoritesDB !== null) {
-    const newFavoritesDB = new Map([...atualFavoritesDB]);
-    newFavoritesDB.set([newFavorite.id], newFavorite);
-    return saveLocalData('favoriteRecipes', [...newFavoritesDB]);
+    return saveLocalData('favoriteRecipes', [...atualFavoritesDB, newFavorite]);
   }
 };
 
-export const removeFavorite = (id) => {
+export const removeFavorite = (idSend) => {
   const atualFavoritesDB = readLocalData('favoriteRecipes');
 
   const newFavoritesDB = atualFavoritesDB
-    .filter((recipe) => !recipe.id.includes(id));
+    .filter(({ id }) => id !== idSend);
 
-  return saveLocalData('favoriteRecipes', [newFavoritesDB]);
+  return saveLocalData('favoriteRecipes', [...newFavoritesDB]);
 };
