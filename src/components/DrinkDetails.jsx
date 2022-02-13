@@ -1,14 +1,15 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { StoreContext } from '../context/store';
+import { DispatchContext, StoreContext } from '../context/store';
+import { setFavorites } from '../context/action';
 
 import { recipeFavoriteFactory, recipeIngredientsFactory } from '../utils/Factory';
 import {
-  isFavorite,
   readLocalData,
   addFavorite,
-  removeFavorite } from '../utils/storageTools';
+  removeFavorite,
+  hasItemInData } from '../utils/storageTools';
 
 import Recommendation from './Recommendation';
 import ButtonSD from './assets/ButtonSD';
@@ -17,6 +18,7 @@ import FavoriteButton from './FavoriteButton';
 
 export default function DrinkDetails() {
   const history = useHistory();
+  const dispatch = useContext(DispatchContext);
   const [favorite, setFavorite] = React.useState(false);
   const recipefocus = Object.values(useContext(StoreContext).recipefocus)[0];
   const { strDrinkThumb, strDrink, strCategory, strInstructions,
@@ -24,14 +26,14 @@ export default function DrinkDetails() {
 
   useEffect(() => {
     const localDataFavorites = readLocalData('favoriteRecipes');
-    console.log(isFavorite(idDrink));
-    const isFavoriteRecipe = (idItem) => {
+    const isFavoriteRecipe = async (idItem) => {
       if (localDataFavorites !== null) {
-        return setFavorite(() => (isFavorite(idItem)));
+        await dispatch(setFavorites(localDataFavorites));
+        return setFavorite(() => (hasItemInData(idItem, 'favoriteRecipes')));
       }
     };
     isFavoriteRecipe(idDrink);
-  }, [idDrink]);
+  }, [dispatch, idDrink]);
 
   const thisSetFavorite = () => {
     if (!favorite) {

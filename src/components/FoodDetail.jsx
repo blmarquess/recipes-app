@@ -4,12 +4,13 @@ import { useHistory } from 'react-router-dom';
 import { refactoryYtUrl } from '../utils/tools';
 import { recipeFavoriteFactory, recipeIngredientsFactory } from '../utils/Factory';
 import {
-  isFavorite,
   readLocalData,
   addFavorite,
-  removeFavorite } from '../utils/storageTools';
+  removeFavorite,
+  hasItemInData } from '../utils/storageTools';
 
-import { StoreContext } from '../context/store';
+import { DispatchContext, StoreContext } from '../context/store';
+import { setFavorites } from '../context/action';
 
 import Recommendation from './Recommendation';
 import ButtonSD from './assets/ButtonSD';
@@ -18,6 +19,7 @@ import FavoriteButton from './FavoriteButton';
 
 export default function FoodDetail() {
   const history = useHistory();
+  const dispatch = useContext(DispatchContext);
   const [favorite, setFavorite] = React.useState(false);
   const recipefocus = Object.values(useContext(StoreContext).recipefocus)[0];
   const { strMealThumb, strMeal, strCategory, strInstructions,
@@ -25,14 +27,14 @@ export default function FoodDetail() {
 
   React.useEffect(() => {
     const localDataFavorites = readLocalData('favoriteRecipes');
-    console.log(isFavorite(idMeal));
     const isFavoriteRecipe = (idItem) => {
       if (localDataFavorites !== null) {
-        return setFavorite(() => (isFavorite(idItem)));
+        dispatch(setFavorites(localDataFavorites));
+        return setFavorite(() => (hasItemInData(idItem, 'favoriteRecipes')));
       }
     };
     isFavoriteRecipe(idMeal);
-  }, [idMeal]);
+  }, [dispatch, idMeal]);
 
   const thisSetFavorite = () => {
     if (!favorite) {
