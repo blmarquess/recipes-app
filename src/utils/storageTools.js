@@ -51,12 +51,17 @@ export const removeInProgress = (idSend) => {
   return saveLocalData('inProgressRecipes', [...newProgressDB]);
 };
 
-export const hasRecipeInProgress = (idItem) => {
+export const hasRecipeInProgress = (idItem, type) => {
   const inProgressDB = readLocalData('inProgressRecipes');
   if (inProgressDB === null) {
     return false;
   }
-  return inProgressDB.some((item) => item.id === idItem);
+  if (type === 'drinks') {
+    return inProgressDB.cocktails[idItem];
+  }
+  if (type === 'foods') {
+    return inProgressDB.meals[idItem];
+  }
 };
 
 // ---------------------------------------------------------------------------------------

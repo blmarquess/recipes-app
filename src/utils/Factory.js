@@ -29,6 +29,6 @@ export const recipeFavoriteFactory = (obj, rota) => ({
   nationality: obj.strArea || '',
   category: obj.strCategory,
   alcoholicOrNot: obj.strAlcoholic || '',
-  name: obj.strCategory,
+  name: obj.strMeal || obj.strDrink,
   image: obj.strMealThumb || obj.strDrinkThumb,
 });

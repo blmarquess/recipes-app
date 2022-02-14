@@ -9,7 +9,9 @@ import {
   readLocalData,
   addFavorite,
   removeFavorite,
-  hasItemInData } from '../utils/storageTools';
+  hasItemInData,
+  hasRecipeInProgress,
+} from '../utils/storageTools';
 
 import Recommendation from './Recommendation';
 import ButtonSD from './assets/ButtonSD';
@@ -24,6 +26,9 @@ export default function DrinkDetails() {
   const { strDrinkThumb, strDrink, strCategory, strInstructions,
     strAlcoholic, idDrink } = recipefocus[0];
 
+  const [isDone, setDone] = React.useState(false);
+  const [isInProgress, setInProgreis] = React.useState(false);
+
   useEffect(() => {
     const localDataFavorites = readLocalData('favoriteRecipes');
     const isFavoriteRecipe = async (idItem) => {
@@ -34,6 +39,20 @@ export default function DrinkDetails() {
     };
     isFavoriteRecipe(idDrink);
   }, [dispatch, idDrink]);
+
+  useEffect(() => {
+    const update = async () => {
+      const localDataDone = readLocalData('doneRecipes');
+      const localDataInProgress = readLocalData('inProgressRecipes');
+      if (localDataDone !== null) {
+        setDone(() => (hasItemInData(idDrink, 'doneRecipes')));
+      }
+      if (localDataInProgress !== null) {
+        setInProgreis(() => (hasRecipeInProgress(idDrink, 'drinks')));
+      }
+    };
+    update();
+  }, [idDrink, setDone, setInProgreis]);
 
   const thisSetFavorite = () => {
     if (!favorite) {
@@ -85,15 +104,16 @@ export default function DrinkDetails() {
 
       <Recommendation />
 
-      <ButtonSD
-        onClick={ () => startRecipe() }
-        data-testid="start-recipe-btn"
-        type="button"
-        position="fixed"
-        bottom="0px"
-      >
-        Start Recipe
-      </ButtonSD>
+      {!isDone && (
+        <ButtonSD
+          onClick={ () => startRecipe() }
+          data-testid="start-recipe-btn"
+          type="button"
+          position="fixed"
+          bottom="0px"
+        >
+          {isInProgress ? 'Continue Recipe' : 'Start Recipe'}
+        </ButtonSD>)}
     </>
   );
 }
