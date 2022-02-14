@@ -20,6 +20,8 @@ export default function reducer(state, action) {
     return { ...state, hasfilter: action.payload };
   case 'SET_FAVORITES':
     return { ...state, favorites: action.payload };
+  case 'SET_INPROGRESS':
+    return { ...state, inprogress: [...action.payload] };
   case 'RECOMMENDATIONS':
     return { ...state, recipesrecomend: action.payload };
   default: return state;
