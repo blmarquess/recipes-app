@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HeaderNoSer from '../components/HeaderNoSer';
 import FavoriteRecipeCard from '../components/FavoriteRecipeCard';
-// import doneRecipes from '../mocks/doneRecipes';
 
 export default function FavoriteRecipes() {
   const [favoriteRecipesKeys, setFavoriteRecipesKeys] = useState(null);
@@ -11,7 +10,6 @@ export default function FavoriteRecipes() {
   });
 
   useEffect(() => {
-    // localStorage.setItem('favoriteRecipes', JSON.stringify(doneRecipes));
     setFavoriteRecipesKeys(JSON.parse(localStorage.getItem('favoriteRecipes')));
   }, []);
 

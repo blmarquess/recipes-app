@@ -1,4 +1,4 @@
-export default function recipeFactory(obAPI) {
+export function recipeIngredientsFactory(obAPI) {
   const ingrdientLists = Object
     .entries(obAPI).filter((key) => key[0]
       .includes('strIngredient'))
@@ -22,3 +22,13 @@ export default function recipeFactory(obAPI) {
       && item.ingredient !== null
       && item.ingredient !== '');
 }
+
+export const recipeFavoriteFactory = (obj, rota) => ({
+  id: obj.idDrink || obj.idMeal,
+  type: rota,
+  nationality: obj.strArea || '',
+  category: obj.strCategory,
+  alcoholicOrNot: obj.strAlcoholic || '',
+  name: obj.strMeal || obj.strDrink,
+  image: obj.strMealThumb || obj.strDrinkThumb,
+});

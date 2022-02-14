@@ -2,11 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 export default function CardCarossel(props) {
-  const { num, imgSrc, title, category, strInstructions } = props;
+  const { num, imgSrc, title, category, strInstructions, redirect, rota, id } = props;
   return (
     <div
       className="max-w-full max-h-32 w-full min-w-full flex border-2 border-gray-100"
       id={ num }
+      role="button"
+      tabIndex={ 0 }
+      onKeyDown={ () => {} }
+      onClick={ () => redirect(rota, id) }
     >
       <div
         className="w-24 flex-none bg-cover overflow-hidden"

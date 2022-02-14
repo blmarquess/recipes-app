@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
 import HeaderProfile from '../components/HeaderNoSer';
 import DoneRecipeCard from '../components/DoneRecipeCard';
-// import doneRecipes from '../mocks/doneRecipes';
 
 export default function DoneRecipes() {
   const [filterDoneRecipes, setFilterDoneRecipes] = useState({
     filteredRecipes: [],
     isFilter: false,
   });
-
-  // useEffect(() => {
-  //   localStorage.setItem('doneRecipes', JSON.stringify(doneRecipes));
-  // });
 
   const doneRecipesKeys = JSON.parse(localStorage.getItem('doneRecipes'));
 
@@ -73,7 +68,7 @@ export default function DoneRecipes() {
           Drinks
         </button>
       </section>
-      { showAllRecipes() }
+      { doneRecipesKeys !== null && showAllRecipes() }
       { showFilterRecipes() }
     </div>
   );

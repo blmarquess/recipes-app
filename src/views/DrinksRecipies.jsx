@@ -1,15 +1,18 @@
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { useLocation } from 'react-router-dom';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
+import RecipesProgress from '../components/RecipesProgress';
 
-function DrinksRecipies() {
+export default function DrinksRecipies() {
+  const id = useLocation().pathname;
+  const rota = id.split('/')[1];
+  const recipeId = id.split('/')[2];
   return (
     <div>
-      <Header title="DrinksRecipies" />
-      <h2>teste</h2>
-      <Footer />
+      {/* <Header title="DrinksRecipies" /> */}
+      <RecipesProgress id={ recipeId } rota={ rota } />
+      {/* <Footer /> */}
     </div>
   );
 }
-
-export default DrinksRecipies;

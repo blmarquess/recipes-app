@@ -7,11 +7,7 @@ export default function AlertLC(props) {
   if (!alertLC) {
     return null;
   }
-  return (
-    <div>
-      <p>Link copied!</p>
-    </div>
-  );
+  return (<div>Link copied!</div>);
 }
 
 AlertLC.propTypes = {
